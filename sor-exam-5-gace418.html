@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application of the Science of Reading — Practice Exam 5 | GACE 418</title>
+<style>
+  :root {
+    --accent: #9f1239;
+    --accent-dark: #7f1d3a;
+    --accent-light: #fb7185;
+    --bg1: #fff1f2;
+    --bg2: #ffe4e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    min-height: 100vh; color: #222;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 18px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  a.back {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: #fff; color: var(--accent-dark); font-weight: 700; font-size: 14px;
+    padding: 9px 16px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    border: 2px solid var(--accent);
+  }
+  a.back:hover { background: var(--accent); color: #fff; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: var(--accent-dark); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .badge:hover { opacity: .88; }
+  .breadcrumb { font-size: 12.5px; font-weight: 700; color: var(--accent-dark); letter-spacing: .02em; margin-bottom: 8px; }
+  header.hero {
+    background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    border-top: 6px solid var(--accent); margin-bottom: 16px;
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: 23px; color: var(--accent-dark); }
+  header.hero p.directions { margin: 0 0 12px; color: #555; font-size: 14px; line-height: 1.55; }
+  header.hero p.directions b { color: #333; }
+  .official-link { font-size: 13px; margin-bottom: 12px; }
+  .official-link a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+  .official-link a:hover { text-decoration: underline; }
+  .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .chip-group-label {
+    font-size: 11px; font-weight: 800; color: #888; margin-right: 2px; letter-spacing: .03em;
+  }
+  .chip {
+    display: inline-block; background: var(--bg2); color: var(--accent-dark); font-weight: 700;
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent-light);
+  }
+  .progress-bar {
+    position: sticky; top: 0; z-index: 5; background: #fff; border-radius: 14px; padding: 12px 18px;
+    margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.1); display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  #answered-count { font-size: 13.5px; font-weight: 700; color: #555; }
+  #score-banner {
+    display: none; background: #fff; border-radius: 14px; padding: 16px 20px; margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.1); text-align: center; font-size: 18px; font-weight: 800;
+    color: var(--accent-dark); border: 2px solid var(--accent);
+  }
+  #score-banner .retake-btn {
+    display: inline-block; margin-top: 10px; background: var(--accent); color: #fff; border: none;
+    border-radius: 999px; font-size: 14px; font-weight: 700; padding: 9px 18px; cursor: pointer;
+  }
+  #score-banner .retake-btn:hover { opacity: .88; }
+  .q-card {
+    background: #fff; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06); border-left: 6px solid var(--accent-light);
+  }
+  .q-num { font-weight: 800; color: var(--accent-dark); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+  .q-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; font-weight: 600; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px;
+    margin-bottom: 8px; cursor: pointer; border: 2px solid #eee; transition: background .15s, border-color .15s;
+  }
+  .opt:hover { background: #faf9ff; border-color: var(--accent-light); }
+  .opt input { margin-top: 3px; accent-color: var(--accent); }
+  .opt.correct { background: #e8f8ee; border-color: #34a853; }
+  .opt.incorrect { background: #fdecea; border-color: #d93025; }
+  .opt label { cursor: pointer; font-size: 15px; line-height: 1.4; }
+  #submit-btn {
+    display: block; width: 100%; max-width: 320px; margin: 24px auto 0; padding: 14px;
+    background: var(--accent-dark); color: #fff; border: none; border-radius: 999px;
+    font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  #submit-btn:hover { opacity: .9; }
+  .unanswered-flag { outline: 2px dashed #d93025; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">&larr; Back to Main Page</a>
+    <a class="badge" href="https://gace.es.pearson.com/studyguide/418" target="_blank" rel="noopener">GACE 418 Study Guide &#8599;</a>
+  </div>
+  <header class="hero">
+    <div class="breadcrumb">GACE 418 &middot; Application of the Science of Reading &middot; Exam 5 of 5</div>
+    <h1>Application of the Science of Reading — Practice Exam 5</h1>
+    <p class="directions">This practice test contains 25 multiple-choice questions covering the GACE 418 assessment's three subareas: <b>Oral Language, Early Literacy &amp; Phonics</b> (I); <b>Fluency, Vocabulary &amp; Comprehension</b> (II); and <b>Assessment &amp; Instruction</b> (III). Select the one best answer for each question. Answers are not scored until you submit the full exam.</p>
+    <div class="chips-row"><span class="chip-group-label">I</span><span class="chip">Oral Lang./Early Lit./Phonics</span><span class="chip-group-label">II</span><span class="chip">Fluency/Vocab./Comprehension</span><span class="chip-group-label">III</span><span class="chip">Assessment/Instruction</span></div>
+  </header>
+  <div class="progress-bar">
+    <span id="answered-count">0 of 25 answered</span>
+  </div>
+  <div id="score-banner"></div>
+  <form id="quiz-form"></form>
+  <button id="submit-btn" type="button" onclick="scoreQuiz()">Submit Exam</button>
+</div>
+
+<script>
+const QUESTIONS = [{"tag": "FVC", "text": "Applying semantic feature analysis, a teacher has students compare related vocabulary words (e.g., mammal, reptile, amphibian) across shared and differing characteristics using a grid. This strategy builds:", "options": ["Fluency rate", "Deeper conceptual understanding of related vocabulary", "Phonemic awareness", "Print concepts"], "correct": 1}, {"tag": "OLEP", "text": "Dialogic reading, in which an adult asks open-ended questions and expands on a child's responses during a shared book reading, is applied to build:", "options": ["Oral reading fluency rate exclusively", "Oral language and early comprehension skills through interactive engagement with text", "Formal phonics decoding skills only", "Handwriting skills"], "correct": 1}, {"tag": "AI", "text": "Applying knowledge of assessment purposes, a teacher would NOT use a one-time, end-of-year summative assessment to:", "options": ["Report overall achievement to families and administrators", "Make weekly instructional adjustments during the school year", "Compare achievement to a state standard", "Evaluate a program's effectiveness at a broad level"], "correct": 1}, {"tag": "AI", "text": "When a diagnostic assessment following a screening flag reveals a specific weakness in phoneme blending, the most appropriate instructional application is to:", "options": ["Design targeted, explicit intervention lessons specifically addressing phoneme blending", "Refer the student for evaluation with no instructional response in the meantime", "Ignore the diagnostic result and proceed with the standard scope and sequence only", "Provide generic instruction unrelated to the specific weakness identified"], "correct": 0}, {"tag": "OLEP", "text": "For a Birth-Kindergarten classroom, which is the most developmentally appropriate way to build phonemic awareness?", "options": ["Oral games such as clapping syllables, rhyming, and identifying beginning sounds, without requiring print", "Multisyllabic word decoding drills", "Independent completion of a multiple-choice vocabulary test", "Timed silent reading passages"], "correct": 0}, {"tag": "FVC", "text": "When a student struggles to answer inferential comprehension questions but can answer literal ones, an appropriate instructional response is to:", "options": ["Conclude the student has no further comprehension needs", "Assign only literal recall worksheets", "Explicitly model combining text clues with background knowledge to draw conclusions the author implies", "Focus exclusively on further phonics drills"], "correct": 2}, {"tag": "FVC", "text": "A teacher applies text-dependent questioning by requiring students to cite specific evidence from the text to support their answers. This practice is intended to:", "options": ["Test phonemic awareness", "Assess print concept knowledge", "Deepen comprehension by grounding interpretation in the text itself rather than only prior opinion", "Measure oral reading fluency rate"], "correct": 2}, {"tag": "AI", "text": "Accommodations, as applied for a student with a reading-related disability, are best defined as:", "options": ["Identical to modifications in every respect", "Changes to the content or expectations themselves, lowering what is being taught", "Never appropriate for reading instruction", "Changes to how a student accesses instruction or demonstrates learning, without changing the underlying content expectations"], "correct": 3}, {"tag": "AI", "text": "A teacher applying culturally responsive Structured Literacy instruction incorporates students' background knowledge and experiences into lessons primarily to:", "options": ["Avoid teaching foundational skills altogether", "Meet a scheduling requirement unrelated to learning outcomes", "Replace the need for explicit phonics instruction", "Increase engagement and comprehension by connecting new content to what students already know"], "correct": 3}, {"tag": "OLEP", "text": "A student consistently confuses the sounds /b/ and /d/ when decoding print. Applying knowledge of early literacy development, the most likely explanation is:", "options": ["A vocabulary deficit unrelated to phonics", "A common early letter-sound/visual confusion that benefits from multisensory, explicit instruction distinguishing the two", "Evidence the student cannot benefit from any phonics instruction", "A comprehension strategy weakness"], "correct": 1}, {"tag": "OLEP", "text": "A 'sound wall,' organized by how sounds are articulated, differs from a traditional alphabet word wall in that it:", "options": ["Is used exclusively for comprehension instruction", "Organizes phonemes by articulation and links them to spelling patterns, rather than organizing by letter alone", "Only displays whole sight words with no sound information", "Replaces the need for any phonics instruction"], "correct": 1}, {"tag": "OLEP", "text": "A student in kindergarten can identify that 'sun' and 'fun' rhyme but struggles to blend individual phonemes into words. This student is likely:", "options": ["Still developing along the typical phonological awareness continuum and needs continued practice with blending", "Exhibiting no signs relevant to literacy development", "Already ready for multisyllabic decoding", "Ready to move on to comprehension strategies exclusively"], "correct": 0}, {"tag": "FVC", "text": "A student reads fluently aloud but cannot retell the main events of a story afterward. Applying assessment data to plan instruction, the teacher should prioritize:", "options": ["Further oral reading fluency drills only", "Basic letter-sound instruction", "Explicit comprehension strategy instruction (e.g., retelling, summarizing, questioning)", "Handwriting practice"], "correct": 2}, {"tag": "FVC", "text": "Reader's Theater, in which students rehearse and perform a script aloud, is applied as a fluency-building strategy because it:", "options": ["Eliminates the need for any comprehension instruction", "Is used solely to assess phonemic awareness", "Focuses only on silent reading speed", "Provides a purposeful, motivating context for repeated, expressive oral reading practice"], "correct": 3}, {"tag": "OLEP", "text": "When applying the alphabetic principle in instruction, a teacher explicitly teaches that the letter 'm' represents the sound /m/. This is best classified as:", "options": ["A fluency-building activity", "A comprehension strategy", "Direct grapheme-phoneme correspondence instruction", "An assessment of background knowledge"], "correct": 2}, {"tag": "AI", "text": "When communicating benchmark assessment results to a parent, best practice is to:", "options": ["Avoid discussing assessment results with parents at all", "Share only a raw numeric score with no explanation", "Provide information that contradicts the data on file", "Clearly explain what the data means, the child's current level relative to expectations, and next instructional steps"], "correct": 3}, {"tag": "AI", "text": "A teacher uses an informal phonics inventory to determine a student does not yet know common vowel teams. The most appropriate instructional response is to:", "options": ["Move on to multisyllabic morphology instruction, skipping vowel teams", "Assume vowel teams are not important for this student's grade level", "Reassess repeatedly with no instructional change", "Explicitly and systematically teach the specific vowel-team patterns the assessment identified as gaps"], "correct": 3}, {"tag": "OLEP", "text": "Which best illustrates application of the continuum from phonological to phonemic awareness in a first-grade lesson?", "options": ["Moving from a syllable-clapping warm-up to an individual phoneme deletion task within the same lesson", "Only ever practicing rhyming, regardless of grade level", "Only ever practicing phoneme deletion with no simpler tasks first", "Avoiding oral language tasks entirely once phonics instruction begins"], "correct": 0}, {"tag": "FVC", "text": "When teaching story grammar elements (characters, setting, problem, events, resolution), a teacher is helping students build a framework for understanding:", "options": ["Narrative text structure to support comprehension and retelling", "Phoneme segmentation", "Print concepts", "Orthographic mapping"], "correct": 0}, {"tag": "OLEP", "text": "When introducing morphological awareness to primary-grade students (e.g., teaching that adding '-s' makes a word plural), a teacher is beginning to build a skill that will later support:", "options": ["Both decoding and vocabulary growth as words become more morphologically complex", "Only handwriting formation", "Only listening comprehension with no connection to print", "Only phonemic awareness at the sound level"], "correct": 0}, {"tag": "AI", "text": "When writing an IEP goal for a student with a specific decoding deficit, the most appropriate goal is:", "options": ["Based only on teacher opinion with no assessment data", "Identical to every other student's IEP goal regardless of need", "Specific, measurable, and tied to the exact skill identified through diagnostic assessment (e.g., decoding CVCe words with 90% accuracy)", "A vague statement about general 'improving reading'"], "correct": 2}, {"tag": "FVC", "text": "When applying fluency instruction with a struggling second-grade reader, repeated reading of a short, appropriately leveled passage is effective because it:", "options": ["Replaces the need for any comprehension instruction", "Teaches new phonics patterns exclusively", "Only benefits students who already read at grade level", "Builds automaticity with the specific words and phrasing in that passage, which can generalize to other texts"], "correct": 3}, {"tag": "AI", "text": "A kindergarten teacher administers a universal screener three times a year to all students. A student scores in the at-risk range each time. The most appropriate next step is to:", "options": ["Conduct further diagnostic assessment to pinpoint specific skill needs and begin more intensive, targeted instruction", "Move the student directly to a special education referral without further assessment", "Assume the screener is inaccurate and ignore the result", "Wait until the following school year to take any action"], "correct": 0}, {"tag": "AI", "text": "A teacher sets a progress-monitoring goal for oral reading fluency using research-based expected rates of growth per week. This practice reflects:", "options": ["Setting arbitrary goals unrelated to any data", "Using normative growth data to set ambitious yet realistic, individualized goals", "Using only a single one-time score with no growth consideration", "Avoiding goal-setting altogether"], "correct": 1}, {"tag": "OLEP", "text": "When applying early literacy assessment to instruction, a teacher who finds a kindergartner cannot yet segment onset and rime should:", "options": ["Skip phonological awareness instruction and begin fluency drills", "Assume the student is not capable of learning to read", "Provide additional oral phonological awareness practice at that skill level before moving to phoneme-level tasks", "Move directly to teaching complex morphology"], "correct": 2}];
+const TOTAL = 25;
+
+const form = document.getElementById('quiz-form');
+
+function render() {
+  form.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  QUESTIONS.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + i;
+    let optsHtml = '';
+    q.options.forEach((opt, j) => {
+      optsHtml += `
+        <div class="opt" id="opt-${i}-${j}" onclick="document.getElementById('radio-${i}-${j}').checked=true; updateCount();">
+          <input type="radio" name="q${i}" id="radio-${i}-${j}" value="${j}" onchange="updateCount();">
+          <label for="radio-${i}-${j}"><strong>${letters[j]}.</strong> ${opt}</label>
+        </div>`;
+    });
+    card.innerHTML = `<div class="q-num">Question ${i+1} of ${TOTAL}</div>
+      <div class="q-text">${q.text}</div>
+      ${optsHtml}`;
+    form.appendChild(card);
+  });
+}
+render();
+
+function updateCount() {
+  let answered = 0;
+  QUESTIONS.forEach((q, i) => {
+    if (form.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  document.getElementById('answered-count').textContent = `${answered} of ${TOTAL} answered`;
+}
+
+function scoreQuiz() {
+  let score = 0;
+  let unanswered = 0;
+  QUESTIONS.forEach((q, i) => {
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('card-' + i);
+    card.classList.remove('unanswered-flag');
+    if (!selected) {
+      unanswered++;
+      card.classList.add('unanswered-flag');
+      return;
+    }
+    const sel = parseInt(selected.value);
+    for (let j = 0; j < q.options.length; j++) {
+      const optDiv = document.getElementById(`opt-${i}-${j}`);
+      optDiv.classList.remove('correct','incorrect');
+      if (j === q.correct) optDiv.classList.add('correct');
+      else if (j === sel) optDiv.classList.add('incorrect');
+    }
+    if (sel === q.correct) score++;
+  });
+  const banner = document.getElementById('score-banner');
+  banner.style.display = 'block';
+  const pct = Math.round((score / TOTAL) * 100);
+  let msg = `You scored ${score} / ${TOTAL} (${pct}%)`;
+  if (unanswered > 0) msg += `<br><span style="font-size:14px;font-weight:600;color:#a33;">${unanswered} question(s) left unanswered (marked in red below)</span>`;
+  msg += `<br><button class="retake-btn" onclick="retakeExam()">Retake exam</button>`;
+  banner.innerHTML = msg;
+  banner.scrollIntoView({behavior:'smooth'});
+}
+
+function retakeExam() {
+  document.getElementById('score-banner').style.display = 'none';
+  render();
+  updateCount();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>

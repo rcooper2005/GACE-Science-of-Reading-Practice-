@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentals of the Science of Reading — Practice Exam 4 | GACE 350</title>
+<style>
+  :root {
+    --accent: #0d9488;
+    --accent-dark: #0f766e;
+    --accent-light: #5eead4;
+    --bg1: #e6fffa;
+    --bg2: #ccfbf1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    min-height: 100vh; color: #222;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 18px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  a.back {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: #fff; color: var(--accent-dark); font-weight: 700; font-size: 14px;
+    padding: 9px 16px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    border: 2px solid var(--accent);
+  }
+  a.back:hover { background: var(--accent); color: #fff; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: var(--accent-dark); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .badge:hover { opacity: .88; }
+  .breadcrumb { font-size: 12.5px; font-weight: 700; color: var(--accent-dark); letter-spacing: .02em; margin-bottom: 8px; }
+  header.hero {
+    background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    border-top: 6px solid var(--accent); margin-bottom: 16px;
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: 23px; color: var(--accent-dark); }
+  header.hero p.directions { margin: 0 0 12px; color: #555; font-size: 14px; line-height: 1.55; }
+  header.hero p.directions b { color: #333; }
+  .official-link { font-size: 13px; margin-bottom: 12px; }
+  .official-link a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+  .official-link a:hover { text-decoration: underline; }
+  .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .chip-group-label {
+    font-size: 11px; font-weight: 800; color: #888; margin-right: 2px; letter-spacing: .03em;
+  }
+  .chip {
+    display: inline-block; background: var(--bg2); color: var(--accent-dark); font-weight: 700;
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent-light);
+  }
+  .progress-bar {
+    position: sticky; top: 0; z-index: 5; background: #fff; border-radius: 14px; padding: 12px 18px;
+    margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.1); display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  #answered-count { font-size: 13.5px; font-weight: 700; color: #555; }
+  #score-banner {
+    display: none; background: #fff; border-radius: 14px; padding: 16px 20px; margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.1); text-align: center; font-size: 18px; font-weight: 800;
+    color: var(--accent-dark); border: 2px solid var(--accent);
+  }
+  #score-banner .retake-btn {
+    display: inline-block; margin-top: 10px; background: var(--accent); color: #fff; border: none;
+    border-radius: 999px; font-size: 14px; font-weight: 700; padding: 9px 18px; cursor: pointer;
+  }
+  #score-banner .retake-btn:hover { opacity: .88; }
+  .q-card {
+    background: #fff; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06); border-left: 6px solid var(--accent-light);
+  }
+  .q-num { font-weight: 800; color: var(--accent-dark); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+  .q-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; font-weight: 600; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px;
+    margin-bottom: 8px; cursor: pointer; border: 2px solid #eee; transition: background .15s, border-color .15s;
+  }
+  .opt:hover { background: #faf9ff; border-color: var(--accent-light); }
+  .opt input { margin-top: 3px; accent-color: var(--accent); }
+  .opt.correct { background: #e8f8ee; border-color: #34a853; }
+  .opt.incorrect { background: #fdecea; border-color: #d93025; }
+  .opt label { cursor: pointer; font-size: 15px; line-height: 1.4; }
+  #submit-btn {
+    display: block; width: 100%; max-width: 320px; margin: 24px auto 0; padding: 14px;
+    background: var(--accent-dark); color: #fff; border: none; border-radius: 999px;
+    font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  #submit-btn:hover { opacity: .9; }
+  .unanswered-flag { outline: 2px dashed #d93025; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">&larr; Back to Main Page</a>
+    <a class="badge" href="https://gace.es.pearson.com/studyguide/350" target="_blank" rel="noopener">GACE 350 Study Guide &#8599;</a>
+  </div>
+  <header class="hero">
+    <div class="breadcrumb">GACE 350 &middot; Fundamentals of the Science of Reading &middot; Exam 4 of 5</div>
+    <h1>Fundamentals of the Science of Reading — Practice Exam 4</h1>
+    <p class="directions">This practice test contains 25 multiple-choice questions covering the GACE 350 assessment's two subareas: <b>Essential Components of Reading</b> (I) and <b>Assessment, Evaluation, Curriculum &amp; Instruction</b> (II). Select the one best answer for each question. Answers are not scored until you submit the full exam.</p>
+    <div class="chips-row"><span class="chip-group-label">I</span><span class="chip">Phon. Awareness</span><span class="chip">Phonics</span><span class="chip">Fluency</span><span class="chip">Vocabulary</span><span class="chip">Comprehension</span><span class="chip">Oral Lang.</span><span class="chip-group-label">II</span><span class="chip">Assess./Curric./Instr.</span></div>
+  </header>
+  <div class="progress-bar">
+    <span id="answered-count">0 of 25 answered</span>
+  </div>
+  <div id="score-banner"></div>
+  <form id="quiz-form"></form>
+  <button id="submit-btn" type="button" onclick="scoreQuiz()">Submit Exam</button>
+</div>
+
+<script>
+const QUESTIONS = [{"tag": "EC-COMP", "text": "According to the Simple View of Reading, reading comprehension is the product of:", "options": ["Language comprehension alone", "Decoding ability alone", "Decoding ability multiplied by language comprehension ability", "Fluency multiplied by vocabulary size"], "correct": 2}, {"tag": "AECI", "text": "Universal design for learning (UDL) principles applied to literacy instruction would most likely include:", "options": ["Excluding students with disabilities from core instruction", "Eliminating all forms of assessment", "Using a single instructional method for every student regardless of need", "Providing multiple means of engagement, representation, and expression to support diverse learners"], "correct": 3}, {"tag": "EC-PA", "text": "Phoneme isolation tasks ask a student to:", "options": ["Delete a syllable from a compound word", "Blend a series of sounds into a whole word", "Identify a single specified sound within a word (e.g., \"What is the first sound in 'sun'?\")", "Read a word aloud from print"], "correct": 2}, {"tag": "EC-VOC", "text": "Which is an example of using a morphological (word-part) strategy to determine word meaning?", "options": ["Recognizing that 'unbreakable' combines 'un-' + 'break' + '-able' to mean 'not able to be broken'", "Looking up the word in a picture dictionary", "Rereading the sentence for fluency practice", "Sounding out each letter individually"], "correct": 0}, {"tag": "AECI", "text": "Common early indicators of dyslexia may include:", "options": ["Advanced vocabulary for the student's age", "Exceptionally fast, accurate oral reading fluency", "No difficulty at all with rhyming or sound manipulation", "Persistent difficulty with phonological awareness and decoding despite adequate instruction"], "correct": 3}, {"tag": "AECI", "text": "A teacher builds in cumulative review of previously taught phonics skills within each new lesson. This practice most directly supports:", "options": ["Comprehension instruction only", "Retention and automatic application of foundational skills over time", "Assessment exclusively, with no instructional purpose", "A one-time introduction of a skill with no need for further practice"], "correct": 1}, {"tag": "EC-PA", "text": "Phonemic awareness differs from phonological awareness in that phonemic awareness:", "options": ["Requires students to see printed letters", "Is a synonym for phonics instruction", "Involves only the smallest units of sound (phonemes) within words", "Refers only to rhyming and alliteration"], "correct": 2}, {"tag": "EC-PHON", "text": "The 'silent-e' (VCe) pattern, as in 'hope,' typically signals that:", "options": ["The word must be memorized as a sight word", "The word is a compound word", "The preceding vowel is short", "The preceding vowel is long and the final 'e' is not pronounced"], "correct": 3}, {"tag": "AECI", "text": "A curriculum described as 'cumulative' in its phonics scope and sequence means that:", "options": ["New skills build on and continually review previously taught skills", "Only the most recently taught skill is ever practiced", "Skills are taught in a random, unplanned order", "Each skill is taught once and never revisited"], "correct": 0}, {"tag": "EC-PA", "text": "A kindergarten teacher has students clap out 'wa-ter-mel-on.' This activity targets:", "options": ["Syllable awareness", "Rime awareness", "Alphabetic principle", "Phoneme isolation"], "correct": 0}, {"tag": "EC-PHON", "text": "In the word 'cake,' the syllable type illustrated is:", "options": ["Vowel-consonant-e (silent-e / VCe)", "Closed syllable", "Open syllable", "R-controlled syllable"], "correct": 0}, {"tag": "EC-PA", "text": "Research on early literacy development consistently shows that phonemic awareness ability in kindergarten is:", "options": ["Unrelated to later reading achievement", "A strong predictor of later decoding and spelling success", "Only relevant for students learning a second language", "Primarily determined by a student's vocabulary size"], "correct": 1}, {"tag": "EC-VOC", "text": "'Word consciousness'  in vocabulary instruction refers to:", "options": ["A synonym for phonemic awareness", "A formal vocabulary test format", "The ability to decode any word instantly", "An awareness of and interest in words, including how they work and are used"], "correct": 3}, {"tag": "AECI", "text": "Which is most consistent with Science of Reading-aligned classroom instruction for a whole class?", "options": ["A block that addresses only comprehension strategies with no attention to foundational skills", "A block devoted entirely to picture-based word guessing strategies", "A block devoted entirely to silent, unguided independent reading with no explicit instruction", "A daily block that includes explicit phonemic awareness/phonics instruction, fluency practice, vocabulary, and comprehension instruction"], "correct": 3}, {"tag": "EC-FLU", "text": "Prosody in oral reading refers to:", "options": ["The size of a reader's vocabulary", "Appropriate phrasing, intonation, stress, and expression that reflect the meaning of the text", "The ability to sound out unfamiliar words", "The total number of words read correctly in one minute"], "correct": 1}, {"tag": "EC-PHON", "text": "Orthographic mapping refers to the process by which:", "options": ["Teachers assess a student's spelling using a rubric", "Readers memorize whole word shapes without attending to letters", "Readers form permanent connections between letter sequences (graphemes) and their sounds and meanings, enabling instant word recognition", "Readers guess unfamiliar words using picture clues"], "correct": 2}, {"tag": "AECI", "text": "Which best describes 'fidelity of implementation' in the context of a reading intervention program?", "options": ["Modifying the intervention extensively before ever using it as intended", "Delivering the intervention as designed, including its content, sequence, and dosage", "Skipping steps in the intervention to save time", "Using the intervention only occasionally with no consistency"], "correct": 1}, {"tag": "AECI", "text": "When a content-area teacher pre-teaches key academic vocabulary before students read a science text, this is an example of:", "options": ["A phonemic awareness activity", "Evidence-based instructional scaffolding to support comprehension of discipline-specific text", "An outcome assessment", "A universal screening procedure"], "correct": 1}, {"tag": "EC-FLU", "text": "Repeated reading, in which a student rereads the same passage several times, is an instructional strategy primarily used to build:", "options": ["Fluency (rate, accuracy, and prosody)", "Handwriting skills", "Phonemic awareness", "Morphological knowledge"], "correct": 0}, {"tag": "EC-COMP", "text": "A student can decode text accurately and fluently but does not understand what she has read. According to the Simple View of Reading, the deficit most likely lies in:", "options": ["Alphabet knowledge", "Print awareness", "Word recognition/decoding", "Language comprehension"], "correct": 3}, {"tag": "EC-PHON", "text": "Which is the best example of a systematic scope-and-sequence approach to phonics?", "options": ["Skipping phonics instruction for students who already know some sight words", "Teaching whatever phonics pattern appears in that week's read-aloud, regardless of difficulty", "Teaching short vowels and simple consonant sounds before introducing vowel teams and multisyllabic words", "Teaching all 26 letter sounds simultaneously in the first week"], "correct": 2}, {"tag": "EC-ORAL", "text": "Syntax awareness—understanding how words combine into grammatically correct sentences—supports reading comprehension by:", "options": ["Replacing the need for vocabulary knowledge", "Helping readers correctly interpret the relationships between words and ideas in complex sentences", "Being unrelated to written language comprehension", "Only affecting spelling, not comprehension"], "correct": 1}, {"tag": "EC-FLU", "text": "Echo reading, where a teacher reads a line and the student immediately repeats it, is especially useful for:", "options": ["Modeling prosody and phrasing for a struggling or developing reader", "Assessing a student's independent reading level", "Teaching new vocabulary words in isolation", "Testing phoneme segmentation"], "correct": 0}, {"tag": "AECI", "text": "A teacher wants to evaluate whether a newly adopted phonics program is effective for her class overall. The most appropriate approach is to:", "options": ["Rely solely on personal impression with no data", "Evaluate based on one struggling student's performance alone", "Compare group-level screening/outcome data before and after implementation alongside fidelity of implementation", "Assume any new program is automatically effective without evaluation"], "correct": 2}, {"tag": "AECI", "text": "A teacher reviews end-of-unit assessment results to decide whether to move forward in the curriculum or reteach a skill. This reflects the instructional principle of:", "options": ["Using ongoing assessment data to guide pacing and instructional decisions", "Avoiding reteaching under any circumstances", "Following the curriculum pacing guide regardless of student performance", "Assessing only at the very end of the school year"], "correct": 0}];
+const TOTAL = 25;
+
+const form = document.getElementById('quiz-form');
+
+function render() {
+  form.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  QUESTIONS.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + i;
+    let optsHtml = '';
+    q.options.forEach((opt, j) => {
+      optsHtml += `
+        <div class="opt" id="opt-${i}-${j}" onclick="document.getElementById('radio-${i}-${j}').checked=true; updateCount();">
+          <input type="radio" name="q${i}" id="radio-${i}-${j}" value="${j}" onchange="updateCount();">
+          <label for="radio-${i}-${j}"><strong>${letters[j]}.</strong> ${opt}</label>
+        </div>`;
+    });
+    card.innerHTML = `<div class="q-num">Question ${i+1} of ${TOTAL}</div>
+      <div class="q-text">${q.text}</div>
+      ${optsHtml}`;
+    form.appendChild(card);
+  });
+}
+render();
+
+function updateCount() {
+  let answered = 0;
+  QUESTIONS.forEach((q, i) => {
+    if (form.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  document.getElementById('answered-count').textContent = `${answered} of ${TOTAL} answered`;
+}
+
+function scoreQuiz() {
+  let score = 0;
+  let unanswered = 0;
+  QUESTIONS.forEach((q, i) => {
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('card-' + i);
+    card.classList.remove('unanswered-flag');
+    if (!selected) {
+      unanswered++;
+      card.classList.add('unanswered-flag');
+      return;
+    }
+    const sel = parseInt(selected.value);
+    for (let j = 0; j < q.options.length; j++) {
+      const optDiv = document.getElementById(`opt-${i}-${j}`);
+      optDiv.classList.remove('correct','incorrect');
+      if (j === q.correct) optDiv.classList.add('correct');
+      else if (j === sel) optDiv.classList.add('incorrect');
+    }
+    if (sel === q.correct) score++;
+  });
+  const banner = document.getElementById('score-banner');
+  banner.style.display = 'block';
+  const pct = Math.round((score / TOTAL) * 100);
+  let msg = `You scored ${score} / ${TOTAL} (${pct}%)`;
+  if (unanswered > 0) msg += `<br><span style="font-size:14px;font-weight:600;color:#a33;">${unanswered} question(s) left unanswered (marked in red below)</span>`;
+  msg += `<br><button class="retake-btn" onclick="retakeExam()">Retake exam</button>`;
+  banner.innerHTML = msg;
+  banner.scrollIntoView({behavior:'smooth'});
+}
+
+function retakeExam() {
+  document.getElementById('score-banner').style.display = 'none';
+  render();
+  updateCount();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>

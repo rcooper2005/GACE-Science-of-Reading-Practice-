@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application of the Science of Reading — Practice Exam 4 | GACE 418</title>
+<style>
+  :root {
+    --accent: #9f1239;
+    --accent-dark: #7f1d3a;
+    --accent-light: #fb7185;
+    --bg1: #fff1f2;
+    --bg2: #ffe4e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    min-height: 100vh; color: #222;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 18px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  a.back {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: #fff; color: var(--accent-dark); font-weight: 700; font-size: 14px;
+    padding: 9px 16px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    border: 2px solid var(--accent);
+  }
+  a.back:hover { background: var(--accent); color: #fff; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: var(--accent-dark); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .badge:hover { opacity: .88; }
+  .breadcrumb { font-size: 12.5px; font-weight: 700; color: var(--accent-dark); letter-spacing: .02em; margin-bottom: 8px; }
+  header.hero {
+    background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    border-top: 6px solid var(--accent); margin-bottom: 16px;
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: 23px; color: var(--accent-dark); }
+  header.hero p.directions { margin: 0 0 12px; color: #555; font-size: 14px; line-height: 1.55; }
+  header.hero p.directions b { color: #333; }
+  .official-link { font-size: 13px; margin-bottom: 12px; }
+  .official-link a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+  .official-link a:hover { text-decoration: underline; }
+  .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .chip-group-label {
+    font-size: 11px; font-weight: 800; color: #888; margin-right: 2px; letter-spacing: .03em;
+  }
+  .chip {
+    display: inline-block; background: var(--bg2); color: var(--accent-dark); font-weight: 700;
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent-light);
+  }
+  .progress-bar {
+    position: sticky; top: 0; z-index: 5; background: #fff; border-radius: 14px; padding: 12px 18px;
+    margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.1); display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  #answered-count { font-size: 13.5px; font-weight: 700; color: #555; }
+  #score-banner {
+    display: none; background: #fff; border-radius: 14px; padding: 16px 20px; margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.1); text-align: center; font-size: 18px; font-weight: 800;
+    color: var(--accent-dark); border: 2px solid var(--accent);
+  }
+  #score-banner .retake-btn {
+    display: inline-block; margin-top: 10px; background: var(--accent); color: #fff; border: none;
+    border-radius: 999px; font-size: 14px; font-weight: 700; padding: 9px 18px; cursor: pointer;
+  }
+  #score-banner .retake-btn:hover { opacity: .88; }
+  .q-card {
+    background: #fff; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06); border-left: 6px solid var(--accent-light);
+  }
+  .q-num { font-weight: 800; color: var(--accent-dark); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+  .q-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; font-weight: 600; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px;
+    margin-bottom: 8px; cursor: pointer; border: 2px solid #eee; transition: background .15s, border-color .15s;
+  }
+  .opt:hover { background: #faf9ff; border-color: var(--accent-light); }
+  .opt input { margin-top: 3px; accent-color: var(--accent); }
+  .opt.correct { background: #e8f8ee; border-color: #34a853; }
+  .opt.incorrect { background: #fdecea; border-color: #d93025; }
+  .opt label { cursor: pointer; font-size: 15px; line-height: 1.4; }
+  #submit-btn {
+    display: block; width: 100%; max-width: 320px; margin: 24px auto 0; padding: 14px;
+    background: var(--accent-dark); color: #fff; border: none; border-radius: 999px;
+    font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  #submit-btn:hover { opacity: .9; }
+  .unanswered-flag { outline: 2px dashed #d93025; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">&larr; Back to Main Page</a>
+    <a class="badge" href="https://gace.es.pearson.com/studyguide/418" target="_blank" rel="noopener">GACE 418 Study Guide &#8599;</a>
+  </div>
+  <header class="hero">
+    <div class="breadcrumb">GACE 418 &middot; Application of the Science of Reading &middot; Exam 4 of 5</div>
+    <h1>Application of the Science of Reading — Practice Exam 4</h1>
+    <p class="directions">This practice test contains 25 multiple-choice questions covering the GACE 418 assessment's three subareas: <b>Oral Language, Early Literacy &amp; Phonics</b> (I); <b>Fluency, Vocabulary &amp; Comprehension</b> (II); and <b>Assessment &amp; Instruction</b> (III). Select the one best answer for each question. Answers are not scored until you submit the full exam.</p>
+    <div class="chips-row"><span class="chip-group-label">I</span><span class="chip">Oral Lang./Early Lit./Phonics</span><span class="chip-group-label">II</span><span class="chip">Fluency/Vocab./Comprehension</span><span class="chip-group-label">III</span><span class="chip">Assessment/Instruction</span></div>
+  </header>
+  <div class="progress-bar">
+    <span id="answered-count">0 of 25 answered</span>
+  </div>
+  <div id="score-banner"></div>
+  <form id="quiz-form"></form>
+  <button id="submit-btn" type="button" onclick="scoreQuiz()">Submit Exam</button>
+</div>
+
+<script>
+const QUESTIONS = [{"tag": "OLEP", "text": "Environmental print (e.g., a 'STOP' sign, a cereal box label) supports early literacy by:", "options": ["Serving as a substitute for systematic phonics instruction", "Helping children begin to notice that print carries meaning in everyday contexts", "Measuring a child's oral reading fluency rate", "Teaching formal grammar rules"], "correct": 1}, {"tag": "OLEP", "text": "When choosing a decodable text for a small group, a teacher applying phonics principles should select a text that:", "options": ["Relies primarily on picture support rather than decodable words", "Has no connection to the current phonics scope and sequence", "Contains many words with untaught, complex patterns", "Contains a high proportion of words following the specific phonics patterns already explicitly taught"], "correct": 3}, {"tag": "OLEP", "text": "A teacher builds print motivation in an early childhood classroom by:", "options": ["Focusing solely on assessment with no positive reading experiences", "Requiring silent, unsupported independent reading with no engagement strategies", "Avoiding books altogether until formal reading instruction begins", "Creating an engaging, print-rich environment and making reading an enjoyable, valued activity"], "correct": 3}, {"tag": "AI", "text": "In common progress-monitoring terminology (e.g., DIBELS), a student scoring in the 'intensive' range would typically receive:", "options": ["Monitoring only once per year", "Enrichment instruction rather than intervention", "The most frequent progress monitoring and most intensive level of intervention support", "No additional support beyond core instruction"], "correct": 2}, {"tag": "AI", "text": "Curriculum-based measurement (CBM) probes, such as oral reading fluency and maze passages, are applied primarily to:", "options": ["Provide brief, repeatable measures for monitoring progress over time", "Assess only vocabulary knowledge", "Replace all other forms of assessment permanently", "Serve as the sole basis for a special education eligibility decision"], "correct": 0}, {"tag": "FVC", "text": "A teacher builds background knowledge through a content-rich curriculum (e.g., a sequenced unit on ecosystems across several weeks) because:", "options": ["Background knowledge only matters for narrative texts", "Background knowledge has no impact on comprehension of informational text", "Deep, connected background knowledge in a topic supports comprehension of increasingly complex texts on that topic", "Content knowledge should be avoided in early literacy instruction"], "correct": 2}, {"tag": "AI", "text": "When evaluating whether to continue, adjust, or discontinue a Tier 2 intervention, a teacher should primarily rely on:", "options": ["A single day's classroom behavior observation", "The student's grade in an unrelated subject", "The intervention's popularity among other teachers", "Multiple progress-monitoring data points collected over a sufficient period of time"], "correct": 3}, {"tag": "AI", "text": "For an English Learner receiving literacy intervention, an appropriate application of progress monitoring includes:", "options": ["Assuming any low score is automatically due to a reading disability", "Using assessment tools and interpreting results in a way that accounts for the student's developing English proficiency", "Skipping progress monitoring for English Learners entirely", "Using tools normed only on monolingual English speakers with no consideration of language status"], "correct": 1}, {"tag": "FVC", "text": "A teacher notices a student's oral retellings include events in the wrong order. Applying comprehension instruction, the teacher should focus on:", "options": ["Sequencing and story structure using tools such as story maps or graphic organizers", "Phoneme blending drills", "Letter formation practice", "Vocabulary tiering exclusively"], "correct": 0}, {"tag": "FVC", "text": "Applying vocabulary instruction embedded within a science unit, a teacher teaches 'evaporation' and 'condensation' directly before and during the unit's readings. This integrated approach supports:", "options": ["Only oral reading fluency", "Only phonics skill development", "Building both content knowledge and academic vocabulary simultaneously", "Only print concept knowledge"], "correct": 2}, {"tag": "AI", "text": "In an MTSS/RTI framework, Tier 2 intervention is best described as:", "options": ["One-on-one intensive intervention for the most severe cases only", "A formal special education eligibility evaluation", "Targeted small-group instruction, in addition to Tier 1 core instruction, for students who need extra support", "Instruction identical to Tier 1 delivered to the whole class"], "correct": 2}, {"tag": "OLEP", "text": "A teacher applies knowledge of syllable division by teaching students to divide 'napkin' between the two consonants (nap-kin) to determine that the first syllable is closed. This strategy supports:", "options": ["Decoding multisyllabic words by breaking them into manageable, decodable parts", "Oral vocabulary development only", "Comprehension of the word's meaning only", "Fluency rate exclusively"], "correct": 0}, {"tag": "OLEP", "text": "A teacher uses a 'successive blending' routine, having students blend sounds together progressively (/m/, /ma/, /mat/) rather than saying each sound in isolation and then blending. This technique is applied specifically to:", "options": ["Support students who struggle to hold and blend a full sequence of isolated sounds", "Build vocabulary knowledge", "Test comprehension of a passage", "Assess a student's independent reading level"], "correct": 0}, {"tag": "FVC", "text": "A teacher applies a retelling rubric that scores whether a student includes setting, characters, problem, and resolution. This assessment is most useful for evaluating:", "options": ["Handwriting legibility", "Narrative comprehension and story structure understanding", "Letter-sound correspondence knowledge", "Phoneme segmentation ability"], "correct": 1}, {"tag": "OLEP", "text": "Applying the alphabetic principle with second-grade students who are ready for more advanced patterns, a teacher introduces r-controlled vowels (ar, or, er, ir, ur). This reflects:", "options": ["An assessment rather than an instructional practice", "Introducing patterns before any foundational skills are in place", "Appropriately sequencing phonics instruction from simpler to more complex patterns as students progress", "A comprehension strategy unrelated to phonics"], "correct": 2}, {"tag": "FVC", "text": "When applying instruction on syntax and sentence complexity for comprehension, a teacher scaffolds a complex sentence by breaking it into smaller meaningful chunks. This helps students:", "options": ["Build phonemic awareness", "Process and understand challenging sentence structures common in academic text", "Increase reading rate with no comprehension benefit", "Improve handwriting formation"], "correct": 1}, {"tag": "OLEP", "text": "When a Birth-Kindergarten teacher models oral storytelling and encourages a toddler to retell events in order, this practice is building a foundation for later:", "options": ["Narrative comprehension and text structure knowledge", "Phoneme-grapheme correspondence exclusively", "Timed fluency performance", "Handwriting formation"], "correct": 0}, {"tag": "OLEP", "text": "When selecting an early literacy intervention for a Birth-Kindergarten student who shows very limited phonological awareness, the most appropriate focus is:", "options": ["Playful, explicit oral phonological awareness activities matched to the student's current skill level", "Independent silent reading of grade-level chapter books", "Comprehension strategy instruction with no phonological component", "Multisyllabic morphological analysis"], "correct": 0}, {"tag": "AI", "text": "Applying assessment data to instructional planning, a curriculum-based measurement (CBM) probe showing a downward trend in oral reading fluency over several data points should prompt the teacher to:", "options": ["Discontinue all progress monitoring", "Ignore the trend since one data point is not a stable indicator", "Review and likely adjust the current instructional plan or intervention", "Increase the difficulty of the passage with no other changes"], "correct": 2}, {"tag": "AI", "text": "A special education teacher integrates explicit phonemic awareness and phonics instruction into a student's IEP goals for reading because:", "options": ["Assessment data indicated a specific foundational skill deficit that requires targeted, evidence-based intervention", "Phonemic awareness instruction is only appropriate for typically developing readers", "IEP goals should never be based on assessment data", "All IEP goals must include phonemic awareness regardless of assessment data"], "correct": 0}, {"tag": "AI", "text": "For a student who is an English Learner receiving Tier 1 instruction, applying the Science of Reading appropriately means:", "options": ["Assuming any reading difficulty is automatically a learning disability", "Providing instruction identical to a monolingual English speaker with no additional language supports", "Withholding all literacy instruction until English proficiency is fully developed", "Providing strong foundational literacy instruction alongside language development support, not delaying literacy instruction"], "correct": 3}, {"tag": "FVC", "text": "A teacher applies vocabulary instruction for English Learners by pointing out cognates (e.g., 'family' and Spanish 'familia'). This strategy supports:", "options": ["Discouraging any use of a student's first language", "Leveraging students' first-language knowledge to build second-language vocabulary", "Testing phonemic awareness", "Replacing the need for direct vocabulary instruction"], "correct": 1}, {"tag": "OLEP", "text": "A teacher applies dictation practice (having students spell words or short sentences the teacher says aloud) primarily to:", "options": ["Assess comprehension of a passage", "Reinforce and assess a student's application of phonics and encoding skills", "Build background knowledge for a content area", "Measure oral reading fluency rate"], "correct": 1}, {"tag": "FVC", "text": "Applying knowledge of oral reading fluency norms, a teacher compares a student's WCPM score to grade-level benchmarks primarily to:", "options": ["Assign a final course grade with no instructional purpose", "Replace comprehension assessment entirely", "Determine the student's vocabulary size", "Determine whether the student's fluency is on track or needs additional support"], "correct": 3}, {"tag": "OLEP", "text": "A BK teacher integrates simple sign language or gesture cues with vocabulary during read-alouds primarily to:", "options": ["Assess phonemic awareness", "Test a child's fine motor skills", "Replace the need for oral language development", "Support comprehension and word learning through an additional multisensory channel"], "correct": 3}];
+const TOTAL = 25;
+
+const form = document.getElementById('quiz-form');
+
+function render() {
+  form.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  QUESTIONS.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + i;
+    let optsHtml = '';
+    q.options.forEach((opt, j) => {
+      optsHtml += `
+        <div class="opt" id="opt-${i}-${j}" onclick="document.getElementById('radio-${i}-${j}').checked=true; updateCount();">
+          <input type="radio" name="q${i}" id="radio-${i}-${j}" value="${j}" onchange="updateCount();">
+          <label for="radio-${i}-${j}"><strong>${letters[j]}.</strong> ${opt}</label>
+        </div>`;
+    });
+    card.innerHTML = `<div class="q-num">Question ${i+1} of ${TOTAL}</div>
+      <div class="q-text">${q.text}</div>
+      ${optsHtml}`;
+    form.appendChild(card);
+  });
+}
+render();
+
+function updateCount() {
+  let answered = 0;
+  QUESTIONS.forEach((q, i) => {
+    if (form.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  document.getElementById('answered-count').textContent = `${answered} of ${TOTAL} answered`;
+}
+
+function scoreQuiz() {
+  let score = 0;
+  let unanswered = 0;
+  QUESTIONS.forEach((q, i) => {
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('card-' + i);
+    card.classList.remove('unanswered-flag');
+    if (!selected) {
+      unanswered++;
+      card.classList.add('unanswered-flag');
+      return;
+    }
+    const sel = parseInt(selected.value);
+    for (let j = 0; j < q.options.length; j++) {
+      const optDiv = document.getElementById(`opt-${i}-${j}`);
+      optDiv.classList.remove('correct','incorrect');
+      if (j === q.correct) optDiv.classList.add('correct');
+      else if (j === sel) optDiv.classList.add('incorrect');
+    }
+    if (sel === q.correct) score++;
+  });
+  const banner = document.getElementById('score-banner');
+  banner.style.display = 'block';
+  const pct = Math.round((score / TOTAL) * 100);
+  let msg = `You scored ${score} / ${TOTAL} (${pct}%)`;
+  if (unanswered > 0) msg += `<br><span style="font-size:14px;font-weight:600;color:#a33;">${unanswered} question(s) left unanswered (marked in red below)</span>`;
+  msg += `<br><button class="retake-btn" onclick="retakeExam()">Retake exam</button>`;
+  banner.innerHTML = msg;
+  banner.scrollIntoView({behavior:'smooth'});
+}
+
+function retakeExam() {
+  document.getElementById('score-banner').style.display = 'none';
+  render();
+  updateCount();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>

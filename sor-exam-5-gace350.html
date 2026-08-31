@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentals of the Science of Reading — Practice Exam 5 | GACE 350</title>
+<style>
+  :root {
+    --accent: #0d9488;
+    --accent-dark: #0f766e;
+    --accent-light: #5eead4;
+    --bg1: #e6fffa;
+    --bg2: #ccfbf1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    min-height: 100vh; color: #222;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 18px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  a.back {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: #fff; color: var(--accent-dark); font-weight: 700; font-size: 14px;
+    padding: 9px 16px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    border: 2px solid var(--accent);
+  }
+  a.back:hover { background: var(--accent); color: #fff; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: var(--accent-dark); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .badge:hover { opacity: .88; }
+  .breadcrumb { font-size: 12.5px; font-weight: 700; color: var(--accent-dark); letter-spacing: .02em; margin-bottom: 8px; }
+  header.hero {
+    background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    border-top: 6px solid var(--accent); margin-bottom: 16px;
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: 23px; color: var(--accent-dark); }
+  header.hero p.directions { margin: 0 0 12px; color: #555; font-size: 14px; line-height: 1.55; }
+  header.hero p.directions b { color: #333; }
+  .official-link { font-size: 13px; margin-bottom: 12px; }
+  .official-link a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+  .official-link a:hover { text-decoration: underline; }
+  .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .chip-group-label {
+    font-size: 11px; font-weight: 800; color: #888; margin-right: 2px; letter-spacing: .03em;
+  }
+  .chip {
+    display: inline-block; background: var(--bg2); color: var(--accent-dark); font-weight: 700;
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent-light);
+  }
+  .progress-bar {
+    position: sticky; top: 0; z-index: 5; background: #fff; border-radius: 14px; padding: 12px 18px;
+    margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.1); display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  #answered-count { font-size: 13.5px; font-weight: 700; color: #555; }
+  #score-banner {
+    display: none; background: #fff; border-radius: 14px; padding: 16px 20px; margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.1); text-align: center; font-size: 18px; font-weight: 800;
+    color: var(--accent-dark); border: 2px solid var(--accent);
+  }
+  #score-banner .retake-btn {
+    display: inline-block; margin-top: 10px; background: var(--accent); color: #fff; border: none;
+    border-radius: 999px; font-size: 14px; font-weight: 700; padding: 9px 18px; cursor: pointer;
+  }
+  #score-banner .retake-btn:hover { opacity: .88; }
+  .q-card {
+    background: #fff; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06); border-left: 6px solid var(--accent-light);
+  }
+  .q-num { font-weight: 800; color: var(--accent-dark); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+  .q-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; font-weight: 600; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px;
+    margin-bottom: 8px; cursor: pointer; border: 2px solid #eee; transition: background .15s, border-color .15s;
+  }
+  .opt:hover { background: #faf9ff; border-color: var(--accent-light); }
+  .opt input { margin-top: 3px; accent-color: var(--accent); }
+  .opt.correct { background: #e8f8ee; border-color: #34a853; }
+  .opt.incorrect { background: #fdecea; border-color: #d93025; }
+  .opt label { cursor: pointer; font-size: 15px; line-height: 1.4; }
+  #submit-btn {
+    display: block; width: 100%; max-width: 320px; margin: 24px auto 0; padding: 14px;
+    background: var(--accent-dark); color: #fff; border: none; border-radius: 999px;
+    font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  #submit-btn:hover { opacity: .9; }
+  .unanswered-flag { outline: 2px dashed #d93025; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">&larr; Back to Main Page</a>
+    <a class="badge" href="https://gace.es.pearson.com/studyguide/350" target="_blank" rel="noopener">GACE 350 Study Guide &#8599;</a>
+  </div>
+  <header class="hero">
+    <div class="breadcrumb">GACE 350 &middot; Fundamentals of the Science of Reading &middot; Exam 5 of 5</div>
+    <h1>Fundamentals of the Science of Reading — Practice Exam 5</h1>
+    <p class="directions">This practice test contains 25 multiple-choice questions covering the GACE 350 assessment's two subareas: <b>Essential Components of Reading</b> (I) and <b>Assessment, Evaluation, Curriculum &amp; Instruction</b> (II). Select the one best answer for each question. Answers are not scored until you submit the full exam.</p>
+    <div class="chips-row"><span class="chip-group-label">I</span><span class="chip">Phon. Awareness</span><span class="chip">Phonics</span><span class="chip">Fluency</span><span class="chip">Vocabulary</span><span class="chip">Comprehension</span><span class="chip">Oral Lang.</span><span class="chip-group-label">II</span><span class="chip">Assess./Curric./Instr.</span></div>
+  </header>
+  <div class="progress-bar">
+    <span id="answered-count">0 of 25 answered</span>
+  </div>
+  <div id="score-banner"></div>
+  <form id="quiz-form"></form>
+  <button id="submit-btn" type="button" onclick="scoreQuiz()">Submit Exam</button>
+</div>
+
+<script>
+const QUESTIONS = [{"tag": "EC-ORAL", "text": "Verbal reasoning, one of the language comprehension strands in Scarborough's Reading Rope, refers to the ability to:", "options": ["Track the number of words read correctly per minute", "Draw inferences, understand figurative language, and reason about ideas expressed through language", "Recognize letters automatically", "Decode multisyllabic words accurately"], "correct": 1}, {"tag": "EC-ORAL", "text": "Which best distinguishes conversational language from the academic language found in most content-area textbooks?", "options": ["Conversational and academic language are identical in structure and vocabulary", "Academic language never appears in spoken form", "Academic language uses more complex, less frequent vocabulary and denser sentence structures", "Conversational language is always harder to understand"], "correct": 2}, {"tag": "EC-VOC", "text": "Research on vocabulary acquisition suggests that a student typically needs to encounter a new word:", "options": ["Only in isolation on a flashcard", "Exactly one time to master it permanently", "Only in a dictionary definition", "Multiple times, in varied and meaningful contexts, to fully learn it"], "correct": 3}, {"tag": "AECI", "text": "A teacher who provides immediate, specific corrective feedback during guided phonics practice is applying a principle of:", "options": ["Explicit instruction", "Incidental learning", "Three-cueing", "Independent silent reading"], "correct": 0}, {"tag": "AECI", "text": "When a screening tool flags several students as at-risk at the start of the year, best practice is to:", "options": ["Immediately refer all flagged students to special education with no further assessment", "Disregard the screener since some students may improve on their own", "Wait until the next screening window with no interim action", "Follow up with diagnostic assessment to clarify specific needs before planning intervention"], "correct": 3}, {"tag": "AECI", "text": "Balanced literacy approaches that historically de-emphasized systematic phonics instruction in favor of exposure to leveled, predictable texts have been critiqued by Science of Reading research primarily because they:", "options": ["Focused exclusively on phonics and ignored comprehension", "Are identical in practice to Structured Literacy", "Provided too much explicit phonics instruction", "Did not provide the explicit, systematic decoding instruction most students need to become proficient readers"], "correct": 3}, {"tag": "EC-ORAL", "text": "When a content-area teacher explicitly teaches the academic language and sentence patterns typical of scientific writing, this supports students':", "options": ["Handwriting formation", "Phonemic awareness only", "Print concept knowledge only", "Oral and academic language development needed to comprehend discipline-specific texts"], "correct": 3}, {"tag": "AECI", "text": "A teacher notices through screening data that a large portion of the class struggles with a specific phonics skill. The most appropriate response is to:", "options": ["Move on to the next skill in the sequence regardless of the data", "Assume the screening tool is flawed and disregard the data", "Ignore the pattern since it applies to many students", "Reteach that skill explicitly to the whole class before moving to small-group differentiation for remaining gaps"], "correct": 3}, {"tag": "EC-COMP", "text": "In Scarborough's Reading Rope, the 'language comprehension' strands include background knowledge, vocabulary, language structures, verbal reasoning, and:", "options": ["Letter recognition", "Phonemic awareness", "Literacy knowledge", "Print concepts"], "correct": 2}, {"tag": "EC-ORAL", "text": "Discourse-level oral language skills, such as maintaining a topic across several conversational turns, support later reading comprehension by:", "options": ["Helping students track and connect ideas across a longer written text", "Improving handwriting legibility", "Building phonemic segmentation ability", "Replacing the need for vocabulary knowledge"], "correct": 0}, {"tag": "AECI", "text": "Structured Literacy, as endorsed by organizations like the International Dyslexia Association, is characterized by instruction that is:", "options": ["Based primarily on guessing words from context and pictures", "Explicit, systematic, cumulative, and diagnostic", "Focused solely on comprehension strategies, without attention to decoding", "Implicit and incidental, embedded only in literature"], "correct": 1}, {"tag": "EC-VOC", "text": "Teaching common Greek and Latin roots (e.g., 'bio-', 'graph', '-ology') to upper-elementary and secondary students primarily supports:", "options": ["Print concept knowledge", "Phonemic awareness development", "Vocabulary growth through recognizing meaningful word parts across many academic words", "Handwriting fluency"], "correct": 2}, {"tag": "AECI", "text": "A school adopts a new core reading curriculum. To ensure fidelity of implementation, teachers should primarily focus on:", "options": ["Using the curriculum only as an occasional supplement with no consistent use", "Delivering the program's lessons as designed, with the intended sequence, pacing, and explicit instructional routines", "Modifying every lesson significantly before ever trying it as designed", "Skipping any lesson that seems too structured"], "correct": 1}, {"tag": "AECI", "text": "When core (Tier 1) instruction alone is not sufficient for a subgroup of students, an MTSS framework calls for:", "options": ["Removing those students from Tier 1 instruction entirely", "Referring every student directly to special education", "Providing additional, more targeted Tier 2 support alongside continued Tier 1 instruction", "Waiting until the following school year to intervene"], "correct": 2}, {"tag": "EC-ORAL", "text": "A student who has extensive oral language exposure to complex vocabulary and varied sentence structures at home enters school with an advantage primarily in:", "options": ["Phoneme deletion tasks exclusively", "Language comprehension skills that support future reading comprehension", "Basic letter formation only", "Fine motor handwriting skills"], "correct": 1}, {"tag": "AECI", "text": "In a Multi-Tiered System of Support (MTSS/RTI), Tier 1 instruction refers to:", "options": ["Small-group intervention supplemental to core instruction", "High-quality, evidence-based core instruction delivered to all students in the general classroom", "Intensive one-on-one instruction for students with the most severe needs", "Special education services only"], "correct": 1}, {"tag": "EC-COMP", "text": "Which strategy specifically targets making inferences while reading?", "options": ["Combining information stated in the text with background knowledge to figure out something the author implies but does not directly state", "Sounding out unfamiliar multisyllabic words", "Practicing a word list for automatic recognition", "Reading with appropriate pacing and expression"], "correct": 0}, {"tag": "EC-PA", "text": "Phoneme manipulation tasks such as substitution (changing /k/at to /b/at) primarily develop the skill of:", "options": ["Recognizing the meaning of unfamiliar words", "Building background knowledge for a text", "Reading with appropriate expression", "Flexibly working with individual sounds in words, which supports spelling and decoding"], "correct": 3}, {"tag": "EC-VOC", "text": "Expressive vocabulary refers to:", "options": ["Words a person can actively produce in speaking or writing", "Vocabulary that cannot be assessed", "Words a person can only recognize when heard or read", "Vocabulary limited to written language only"], "correct": 0}, {"tag": "EC-COMP", "text": "The Question-Answer Relationship (QAR) strategy helps students:", "options": ["Practice grapheme-phoneme correspondences", "Measure oral reading rate", "Distinguish between questions answered directly in the text and questions requiring inference or prior knowledge", "Build automatic sight-word recognition"], "correct": 2}, {"tag": "EC-FLU", "text": "Why is fluency often described as a 'bridge' between decoding and comprehension?", "options": ["Automatic, accurate reading frees cognitive resources for constructing meaning from text", "Fluency instruction fully replaces the need for comprehension instruction", "Fluent readers no longer need to comprehend what they read", "Fluency has no connection to either decoding or comprehension"], "correct": 0}, {"tag": "EC-ORAL", "text": "Encouraging young children to retell a story in their own words, in order, primarily builds:", "options": ["Narrative/discourse-level oral language skills that support later comprehension", "Print concept knowledge exclusively", "Handwriting fluency", "Phonemic awareness exclusively"], "correct": 0}, {"tag": "AECI", "text": "Which best reflects appropriate use of a phonics screener result showing a student has mastered short vowels but not vowel teams?", "options": ["Moving instruction forward to explicitly teach vowel teams while reviewing short vowels as needed", "Reteaching short vowels exclusively and ignoring vowel teams", "Skipping both skills entirely", "Assuming the student needs no further phonics instruction"], "correct": 0}, {"tag": "EC-PHON", "text": "Which pair of words share the same vowel team pattern?", "options": ["bike, time", "hat, cap", "boat, coach", "open, silent"], "correct": 2}, {"tag": "EC-PHON", "text": "Morphological analysis in phonics/word study instruction focuses on:", "options": ["Counting the number of letters in a word", "Breaking words into meaningful parts such as prefixes, roots, and suffixes", "Matching a word to a picture", "Identifying rhyming word families only"], "correct": 1}];
+const TOTAL = 25;
+
+const form = document.getElementById('quiz-form');
+
+function render() {
+  form.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  QUESTIONS.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + i;
+    let optsHtml = '';
+    q.options.forEach((opt, j) => {
+      optsHtml += `
+        <div class="opt" id="opt-${i}-${j}" onclick="document.getElementById('radio-${i}-${j}').checked=true; updateCount();">
+          <input type="radio" name="q${i}" id="radio-${i}-${j}" value="${j}" onchange="updateCount();">
+          <label for="radio-${i}-${j}"><strong>${letters[j]}.</strong> ${opt}</label>
+        </div>`;
+    });
+    card.innerHTML = `<div class="q-num">Question ${i+1} of ${TOTAL}</div>
+      <div class="q-text">${q.text}</div>
+      ${optsHtml}`;
+    form.appendChild(card);
+  });
+}
+render();
+
+function updateCount() {
+  let answered = 0;
+  QUESTIONS.forEach((q, i) => {
+    if (form.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  document.getElementById('answered-count').textContent = `${answered} of ${TOTAL} answered`;
+}
+
+function scoreQuiz() {
+  let score = 0;
+  let unanswered = 0;
+  QUESTIONS.forEach((q, i) => {
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('card-' + i);
+    card.classList.remove('unanswered-flag');
+    if (!selected) {
+      unanswered++;
+      card.classList.add('unanswered-flag');
+      return;
+    }
+    const sel = parseInt(selected.value);
+    for (let j = 0; j < q.options.length; j++) {
+      const optDiv = document.getElementById(`opt-${i}-${j}`);
+      optDiv.classList.remove('correct','incorrect');
+      if (j === q.correct) optDiv.classList.add('correct');
+      else if (j === sel) optDiv.classList.add('incorrect');
+    }
+    if (sel === q.correct) score++;
+  });
+  const banner = document.getElementById('score-banner');
+  banner.style.display = 'block';
+  const pct = Math.round((score / TOTAL) * 100);
+  let msg = `You scored ${score} / ${TOTAL} (${pct}%)`;
+  if (unanswered > 0) msg += `<br><span style="font-size:14px;font-weight:600;color:#a33;">${unanswered} question(s) left unanswered (marked in red below)</span>`;
+  msg += `<br><button class="retake-btn" onclick="retakeExam()">Retake exam</button>`;
+  banner.innerHTML = msg;
+  banner.scrollIntoView({behavior:'smooth'});
+}
+
+function retakeExam() {
+  document.getElementById('score-banner').style.display = 'none';
+  render();
+  updateCount();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>

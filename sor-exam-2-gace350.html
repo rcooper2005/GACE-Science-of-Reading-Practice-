@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentals of the Science of Reading — Practice Exam 2 | GACE 350</title>
+<style>
+  :root {
+    --accent: #0d9488;
+    --accent-dark: #0f766e;
+    --accent-light: #5eead4;
+    --bg1: #e6fffa;
+    --bg2: #ccfbf1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(160deg, var(--bg1), var(--bg2));
+    min-height: 100vh; color: #222;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 24px 18px 90px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  a.back {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: #fff; color: var(--accent-dark); font-weight: 700; font-size: 14px;
+    padding: 9px 16px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    border: 2px solid var(--accent);
+  }
+  a.back:hover { background: var(--accent); color: #fff; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    background: var(--accent-dark); color: #fff; font-weight: 700; font-size: 13px;
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .badge:hover { opacity: .88; }
+  .breadcrumb { font-size: 12.5px; font-weight: 700; color: var(--accent-dark); letter-spacing: .02em; margin-bottom: 8px; }
+  header.hero {
+    background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    border-top: 6px solid var(--accent); margin-bottom: 16px;
+  }
+  header.hero h1 { margin: 0 0 8px; font-size: 23px; color: var(--accent-dark); }
+  header.hero p.directions { margin: 0 0 12px; color: #555; font-size: 14px; line-height: 1.55; }
+  header.hero p.directions b { color: #333; }
+  .official-link { font-size: 13px; margin-bottom: 12px; }
+  .official-link a { color: var(--accent-dark); font-weight: 700; text-decoration: none; }
+  .official-link a:hover { text-decoration: underline; }
+  .chips-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .chip-group-label {
+    font-size: 11px; font-weight: 800; color: #888; margin-right: 2px; letter-spacing: .03em;
+  }
+  .chip {
+    display: inline-block; background: var(--bg2); color: var(--accent-dark); font-weight: 700;
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent-light);
+  }
+  .progress-bar {
+    position: sticky; top: 0; z-index: 5; background: #fff; border-radius: 14px; padding: 12px 18px;
+    margin-bottom: 16px; box-shadow: 0 4px 14px rgba(0,0,0,.1); display: flex; align-items: center;
+    justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+  #answered-count { font-size: 13.5px; font-weight: 700; color: #555; }
+  #score-banner {
+    display: none; background: #fff; border-radius: 14px; padding: 16px 20px; margin-bottom: 18px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.1); text-align: center; font-size: 18px; font-weight: 800;
+    color: var(--accent-dark); border: 2px solid var(--accent);
+  }
+  #score-banner .retake-btn {
+    display: inline-block; margin-top: 10px; background: var(--accent); color: #fff; border: none;
+    border-radius: 999px; font-size: 14px; font-weight: 700; padding: 9px 18px; cursor: pointer;
+  }
+  #score-banner .retake-btn:hover { opacity: .88; }
+  .q-card {
+    background: #fff; border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06); border-left: 6px solid var(--accent-light);
+  }
+  .q-num { font-weight: 800; color: var(--accent-dark); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+  .q-text { font-size: 16px; line-height: 1.5; margin-bottom: 12px; font-weight: 600; }
+  .opt {
+    display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 10px;
+    margin-bottom: 8px; cursor: pointer; border: 2px solid #eee; transition: background .15s, border-color .15s;
+  }
+  .opt:hover { background: #faf9ff; border-color: var(--accent-light); }
+  .opt input { margin-top: 3px; accent-color: var(--accent); }
+  .opt.correct { background: #e8f8ee; border-color: #34a853; }
+  .opt.incorrect { background: #fdecea; border-color: #d93025; }
+  .opt label { cursor: pointer; font-size: 15px; line-height: 1.4; }
+  #submit-btn {
+    display: block; width: 100%; max-width: 320px; margin: 24px auto 0; padding: 14px;
+    background: var(--accent-dark); color: #fff; border: none; border-radius: 999px;
+    font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  #submit-btn:hover { opacity: .9; }
+  .unanswered-flag { outline: 2px dashed #d93025; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="index.html">&larr; Back to Main Page</a>
+    <a class="badge" href="https://gace.es.pearson.com/studyguide/350" target="_blank" rel="noopener">GACE 350 Study Guide &#8599;</a>
+  </div>
+  <header class="hero">
+    <div class="breadcrumb">GACE 350 &middot; Fundamentals of the Science of Reading &middot; Exam 2 of 5</div>
+    <h1>Fundamentals of the Science of Reading — Practice Exam 2</h1>
+    <p class="directions">This practice test contains 25 multiple-choice questions covering the GACE 350 assessment's two subareas: <b>Essential Components of Reading</b> (I) and <b>Assessment, Evaluation, Curriculum &amp; Instruction</b> (II). Select the one best answer for each question. Answers are not scored until you submit the full exam.</p>
+    <div class="chips-row"><span class="chip-group-label">I</span><span class="chip">Phon. Awareness</span><span class="chip">Phonics</span><span class="chip">Fluency</span><span class="chip">Vocabulary</span><span class="chip">Comprehension</span><span class="chip">Oral Lang.</span><span class="chip-group-label">II</span><span class="chip">Assess./Curric./Instr.</span></div>
+  </header>
+  <div class="progress-bar">
+    <span id="answered-count">0 of 25 answered</span>
+  </div>
+  <div id="score-banner"></div>
+  <form id="quiz-form"></form>
+  <button id="submit-btn" type="button" onclick="scoreQuiz()">Submit Exam</button>
+</div>
+
+<script>
+const QUESTIONS = [{"tag": "EC-PA", "text": "Which of these is the clearest example of alliteration used to build phonological awareness?", "options": ["\"Silly Sam sipped soda slowly\"", "\"Once upon a time\"", "\"Sam has a red hat\"", "\"The cat sat on the mat\""], "correct": 0}, {"tag": "AECI", "text": "For a Middle Grades or Secondary content-area teacher without a background in reading instruction, awareness-level knowledge of the Science of Reading is most useful for:", "options": ["Diagnosing a specific reading disability without further assessment", "Recognizing when students struggle with foundational literacy skills and appropriately supporting or referring them", "Independently designing a full Structured Literacy intervention program", "Replacing the school's reading specialist entirely"], "correct": 1}, {"tag": "AECI", "text": "When planning instruction for a mixed-ability classroom, differentiated instruction grounded in the Science of Reading would primarily involve:", "options": ["Grouping students solely by age, regardless of skill level", "Ignoring assessment data when grouping students", "Using assessment data to provide targeted small-group instruction matched to specific skill needs", "Providing identical whole-class instruction with no adjustments"], "correct": 2}, {"tag": "EC-FLU", "text": "Choral reading, in which a group reads a passage aloud together, supports fluency development mainly by:", "options": ["Testing a student's independent reading rate", "Providing a supportive model of accurate, expressive reading while giving students practice", "Assessing phonemic segmentation ability", "Building vocabulary through direct instruction"], "correct": 1}, {"tag": "AECI", "text": "A content-area teacher collaborates with a reading specialist to identify strategies for supporting a struggling reader in social studies class. This reflects the principle that:", "options": ["Reading specialists should work in isolation from classroom teachers", "Literacy instruction is the sole responsibility of the English department", "Content-area teachers should never be involved in literacy support", "Literacy support is most effective when it involves collaboration across educators with relevant expertise"], "correct": 3}, {"tag": "EC-ORAL", "text": "Listening comprehension and reading comprehension tend to:", "options": ["Have no relationship to one another at any age", "Diverge permanently after kindergarten", "Converge over time, as decoding becomes automatic and language comprehension drives both", "Only apply to students with reading disabilities"], "correct": 2}, {"tag": "EC-PHON", "text": "A consonant-le syllable, as in the word 'table' or 'little,' typically:", "options": ["Is only found in one-syllable words", "Always contains a long vowel sound", "Only occurs at the beginning of a word", "Forms the final syllable and includes the consonant before 'le'"], "correct": 3}, {"tag": "EC-COMP", "text": "A teacher has students summarize a passage by identifying the main idea and key supporting details. This activity primarily develops:", "options": ["Automatic letter-sound recall", "Orthographic mapping", "Phonemic segmentation", "Comprehension of overall text meaning"], "correct": 3}, {"tag": "EC-ORAL", "text": "Academic language differs from conversational, everyday language in that academic language:", "options": ["Is identical to conversational language", "Is always easier for young children to understand", "Applies only to spoken, not written, communication", "Uses more complex syntax and specialized, less familiar vocabulary typical of school texts"], "correct": 3}, {"tag": "AECI", "text": "A school-wide plan for universal screening, tiered intervention, and progress monitoring is best described as part of a:", "options": ["A single classroom's seating chart", "A one-time summative test schedule", "Multi-Tiered System of Support (MTSS) framework", "An unrelated administrative scheduling task"], "correct": 2}, {"tag": "EC-COMP", "text": "A teacher asks students to identify the problem a character faces and the solution reached by the end of a story. This activity supports understanding of:", "options": ["Narrative text structure", "Orthographic mapping", "Print concepts", "Phoneme segmentation"], "correct": 0}, {"tag": "EC-PA", "text": "A teacher asks a student, \"Say 'stop' without the /s/ sound.\" This task specifically assesses:", "options": ["Phoneme deletion", "Rhyme recognition", "Syllable segmentation", "Print concepts"], "correct": 0}, {"tag": "EC-FLU", "text": "A student reads accurately and quickly but in a flat, word-by-word monotone with no attention to punctuation. This student most needs support with:", "options": ["Grapheme-phoneme correspondence", "Prosody", "Phonemic awareness", "Print concepts"], "correct": 1}, {"tag": "AECI", "text": "For secondary content-area teachers (e.g., science or social studies), 'disciplinary literacy' instruction involves:", "options": ["Teaching students how to read, write, and reason using the specific text structures and vocabulary of that academic discipline", "Delegating all literacy instruction to the English department", "Avoiding text-based instruction altogether in favor of lecture", "Teaching only generic reading strategies unrelated to the subject matter"], "correct": 0}, {"tag": "EC-PA", "text": "Why is phonemic awareness instruction alone insufficient for teaching children to read?", "options": ["It is not related to reading at all", "It builds sound manipulation skills but does not teach the letter-sound correspondences needed to decode print", "It replaces the need for vocabulary instruction", "It only benefits students who already read fluently"], "correct": 1}, {"tag": "AECI", "text": "Data-based decision making in reading instruction means that a teacher:", "options": ["Uses only end-of-year summative test data to plan daily lessons", "Chooses instructional materials solely based on personal preference", "Uses assessment results to identify student needs and adjust instruction or intervention accordingly", "Ignores assessment data in favor of following the same pacing guide for all students"], "correct": 2}, {"tag": "EC-PA", "text": "Which activity requires NO printed text and is purely auditory/oral?", "options": ["Reading a decodable book aloud", "Matching a letter to its sound on a worksheet", "Sorting picture cards by their beginning sound", "Writing a word from dictation"], "correct": 2}, {"tag": "AECI", "text": "Progress-monitoring assessments are typically administered:", "options": ["Frequently (e.g., weekly or biweekly) to track a student's response to instruction/intervention over time", "Only to students who score in the highest percentile", "Only once at the very end of the school year", "Exclusively to assess background knowledge"], "correct": 0}, {"tag": "EC-VOC", "text": "Which context clue type is illustrated: \"The gregarious toddler, unlike her shy older brother, made friends with every child at the park\"?", "options": ["Contrast/antonym clue", "Definition clue", "No usable clue is present", "Synonym clue"], "correct": 0}, {"tag": "EC-PA", "text": "Which sequence reflects the typical developmental progression of phonological awareness, from easiest to most difficult?", "options": ["Phoneme > onset-rime > syllable > word", "Word > syllable > onset-rime > phoneme", "Onset-rime > word > phoneme > syllable", "Syllable > phoneme > word > onset-rime"], "correct": 1}, {"tag": "EC-FLU", "text": "According to automaticity theory (LaBerge & Samuels), fluent word recognition matters because it:", "options": ["Has no relationship to comprehension", "Replaces the need for background knowledge", "Is only relevant for oral reading, not silent reading", "Frees up limited cognitive resources so a reader can focus attention on comprehension"], "correct": 3}, {"tag": "EC-ORAL", "text": "A teacher engages students in frequent classroom discussion and asks open-ended questions during content instruction. This practice primarily builds:", "options": ["Oral language and verbal reasoning skills that support comprehension", "Orthographic mapping", "Handwriting automaticity", "Phoneme blending skills"], "correct": 0}, {"tag": "EC-PHON", "text": "Decodable texts are designed primarily to:", "options": ["Expose students to a wide, unrestricted vocabulary", "Assess a student's listening comprehension", "Give students practice applying phonics patterns they have already been explicitly taught", "Replace the need for phonics instruction"], "correct": 2}, {"tag": "EC-PA", "text": "Which skill sits at the most difficult end of the phonological awareness continuum?", "options": ["Recognizing whether two words rhyme", "Blending onset and rime into a word", "Counting the syllables in a word", "Manipulating individual phonemes (e.g., deleting or substituting a single sound)"], "correct": 3}, {"tag": "EC-COMP", "text": "Comprehension monitoring refers to a reader's ability to:", "options": ["Decode words automatically without any awareness", "Recognize when understanding has broken down and apply a fix-up strategy", "Read text quickly regardless of understanding", "Identify individual phonemes in words"], "correct": 1}];
+const TOTAL = 25;
+
+const form = document.getElementById('quiz-form');
+
+function render() {
+  form.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  QUESTIONS.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'card-' + i;
+    let optsHtml = '';
+    q.options.forEach((opt, j) => {
+      optsHtml += `
+        <div class="opt" id="opt-${i}-${j}" onclick="document.getElementById('radio-${i}-${j}').checked=true; updateCount();">
+          <input type="radio" name="q${i}" id="radio-${i}-${j}" value="${j}" onchange="updateCount();">
+          <label for="radio-${i}-${j}"><strong>${letters[j]}.</strong> ${opt}</label>
+        </div>`;
+    });
+    card.innerHTML = `<div class="q-num">Question ${i+1} of ${TOTAL}</div>
+      <div class="q-text">${q.text}</div>
+      ${optsHtml}`;
+    form.appendChild(card);
+  });
+}
+render();
+
+function updateCount() {
+  let answered = 0;
+  QUESTIONS.forEach((q, i) => {
+    if (form.querySelector(`input[name="q${i}"]:checked`)) answered++;
+  });
+  document.getElementById('answered-count').textContent = `${answered} of ${TOTAL} answered`;
+}
+
+function scoreQuiz() {
+  let score = 0;
+  let unanswered = 0;
+  QUESTIONS.forEach((q, i) => {
+    const selected = form.querySelector(`input[name="q${i}"]:checked`);
+    const card = document.getElementById('card-' + i);
+    card.classList.remove('unanswered-flag');
+    if (!selected) {
+      unanswered++;
+      card.classList.add('unanswered-flag');
+      return;
+    }
+    const sel = parseInt(selected.value);
+    for (let j = 0; j < q.options.length; j++) {
+      const optDiv = document.getElementById(`opt-${i}-${j}`);
+      optDiv.classList.remove('correct','incorrect');
+      if (j === q.correct) optDiv.classList.add('correct');
+      else if (j === sel) optDiv.classList.add('incorrect');
+    }
+    if (sel === q.correct) score++;
+  });
+  const banner = document.getElementById('score-banner');
+  banner.style.display = 'block';
+  const pct = Math.round((score / TOTAL) * 100);
+  let msg = `You scored ${score} / ${TOTAL} (${pct}%)`;
+  if (unanswered > 0) msg += `<br><span style="font-size:14px;font-weight:600;color:#a33;">${unanswered} question(s) left unanswered (marked in red below)</span>`;
+  msg += `<br><button class="retake-btn" onclick="retakeExam()">Retake exam</button>`;
+  banner.innerHTML = msg;
+  banner.scrollIntoView({behavior:'smooth'});
+}
+
+function retakeExam() {
+  document.getElementById('score-banner').style.display = 'none';
+  render();
+  updateCount();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
