@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["Language comprehension alone is not enough.", "Decoding alone is not enough.", "The Simple View: Reading Comprehension = Decoding × Language Comprehension.", "Fluency and vocabulary are not the formula."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["UDL includes all learners.", "UDL does not eliminate assessment.", "A single method ignores variability.", "UDL provides multiple means of engagement, representation, and expression."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Deleting a syllable is deletion.", "Blending is a different task.", "Isolation identifies one specified sound (first sound in \"sun\").", "Reading print is not phonemic awareness."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Analyzing un- + break + -able is a morphological strategy.", "A dictionary is a reference tool, not morphology.", "Rereading is fluency practice.", "Letter-by-letter sounding is decoding."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Advanced vocabulary is not a dyslexia indicator.", "Fast, accurate reading is not a dyslexia indicator.", "Difficulty with rhyme and sounds would be an indicator.", "Persistent phonological and decoding difficulty despite instruction is an indicator."], "t": "Dyslexia: assessment and identification", "u": "https://www.readingrockets.org/topics/assessment-and-evaluation/articles/dyslexia-schools-assessment-and-identification"}, {"w": ["Cumulative review targets foundational skills.", "Cumulative review builds retention and automatic use.", "Cumulative review is instruction.", "Skills need repeated practice."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Phonemic awareness is oral.", "It is not phonics.", "Phonemic awareness focuses on individual phonemes.", "Rhyme and alliteration are broader phonological skills."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["VCe words are decodable.", "VCe words are not compounds.", "A short vowel is a closed syllable.", "Silent e makes the preceding vowel long (hope)."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Cumulative means new skills build on and review earlier ones.", "Only the latest skill would not be cumulative.", "Random order is not systematic.", "Skills are revisited, not taught once."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Clapping parts of a word is syllable awareness.", "Rime awareness focuses on word endings.", "The alphabetic principle links letters and sounds.", "Phoneme isolation is single sounds."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["\"Cake\" is VCe (silent e).", "A closed syllable would make the vowel short.", "An open syllable ends in a vowel.", "There is no r in \"cake.\""], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Phonemic awareness is strongly related to later reading.", "Kindergarten phonemic awareness strongly predicts later decoding and spelling.", "It predicts reading for all learners.", "It is distinct from vocabulary size."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Word consciousness is not phonemic awareness.", "It is not a test format.", "It is not instant decoding.", "Word consciousness is interest in and awareness of words."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Comprehension-only blocks skip foundations.", "Picture guessing is not aligned with the evidence.", "Unguided reading lacks instruction.", "A daily block with PA and phonics, fluency, vocabulary, and comprehension is aligned."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Vocabulary size is a separate concept.", "Prosody is phrasing, intonation, stress, and expression.", "Sounding out is decoding.", "WCPM is rate."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Orthographic mapping is not grading.", "Mapping connects letters to sounds, not shapes.", "Orthographic mapping bonds letter sequences to sounds and meanings for instant recognition.", "Guessing is not mapping."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Modifying before trying breaks fidelity.", "Fidelity means delivering content, sequence, and dosage as designed.", "Skipping steps breaks fidelity.", "Inconsistent use breaks fidelity."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Pre-teaching vocabulary is not phonemic awareness.", "Pre-teaching key vocabulary is evidence-based scaffolding.", "It is not an outcome assessment.", "It is not screening."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Repeated reading builds fluency: rate, accuracy, and prosody.", "It does not build handwriting.", "It does not build phonemic awareness.", "It does not build morphology."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Alphabet knowledge supports decoding, which is already strong.", "Print awareness is not the issue.", "Decoding is strong.", "Strong decoding plus weak understanding points to language comprehension."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["Skipping phonics is not systematic.", "Following the read-aloud's patterns is incidental.", "Simple to complex (short vowels before vowel teams) is systematic.", "Teaching all sounds at once is overwhelming."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Syntax awareness does not replace vocabulary.", "Syntax helps readers interpret relationships between words and ideas.", "Syntax matters in written language too.", "Syntax affects comprehension, not just spelling."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Echo reading models prosody and phrasing for students to imitate.", "It does not assess an independent level.", "It is not vocabulary instruction.", "It is not segmentation."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Impressions are not evidence.", "One student is not a representative sample.", "Compare before-and-after group data, alongside fidelity.", "New programs must be evaluated."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Using unit results to decide whether to reteach is data-guided pacing.", "Reteaching may be needed.", "Pacing should respond to data.", "Assessment should be ongoing."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

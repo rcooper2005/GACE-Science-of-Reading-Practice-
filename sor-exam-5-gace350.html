@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["Words correct per minute is fluency.", "Verbal reasoning covers inference, figurative language, and reasoning with language.", "Letter recognition is a word recognition skill.", "Decoding is a word recognition skill."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["Conversational and academic language differ.", "Academic language is spoken too.", "Academic language is denser, with less frequent vocabulary.", "Conversational language is easier."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Isolation limits learning.", "One exposure is rarely enough.", "Definitions alone are insufficient.", "Students need multiple, varied, meaningful encounters with a word."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Immediate, specific corrective feedback is a feature of explicit instruction.", "Incidental learning lacks planned feedback.", "Three-cueing involves guessing.", "Silent reading has no feedback."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["A screener alone does not justify a special education referral.", "Disregarding the screener ignores risk.", "Waiting delays help.", "Follow up with diagnostics to clarify needs."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Balanced literacy did not focus only on phonics.", "It differs from Structured Literacy.", "It provided too little phonics, not too much.", "It lacked the explicit, systematic decoding instruction most students need."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Handwriting is unrelated.", "Phonemic awareness is unrelated.", "Print concepts are unrelated.", "Teaching academic language patterns builds oral and academic language for discipline texts."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Moving on ignores the data.", "Disregarding valid data is unwise.", "Widespread need calls for action.", "Reteach the skill to the whole class, then differentiate."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Letter recognition is on the word recognition side of the Rope.", "Phonemic awareness is word recognition.", "Literacy knowledge (print concepts, genres) completes the language strands.", "Print concepts fall within literacy knowledge, but the strand is named literacy knowledge."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["Discourse skills help students track and connect ideas across long texts.", "They are unrelated to handwriting.", "They are not segmentation.", "They do not replace vocabulary."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Guessing is not Structured Literacy.", "Structured Literacy is explicit, systematic, cumulative, and diagnostic.", "It addresses decoding.", "It is not implicit."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Roots are not print concepts.", "Roots are meaning units, not phonemic awareness.", "Greek and Latin roots unlock meaning across many academic words.", "Roots are not handwriting."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Occasional use is not fidelity.", "Fidelity means delivering lessons as designed: sequence, pacing, and routines.", "Heavy modification breaks fidelity.", "Skipping lessons breaks fidelity."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Students keep Tier 1 instruction.", "Not everyone needs special education.", "Add targeted Tier 2 support alongside Tier 1.", "Waiting delays help."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["The advantage is not only phoneme deletion.", "Rich oral language builds language comprehension that supports reading.", "Letter formation is unrelated.", "Fine motor skills are unrelated."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Small-group support is Tier 2.", "Tier 1 is high-quality core instruction for all students.", "Intensive one-on-one is Tier 3.", "Tier 1 is general education."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Combining text clues with background knowledge is making an inference.", "Sounding out is decoding.", "Practicing a word list is automaticity.", "Pacing and expression is fluency."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Substitution is not word meaning.", "It does not build background knowledge.", "It is not expression.", "Substitution develops flexible sound manipulation that supports spelling and decoding."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Expressive vocabulary is words actively produced in speech or writing.", "Expressive vocabulary can be assessed.", "Words only recognized are receptive.", "Expressive vocabulary includes speech."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["QAR does not teach grapheme-phoneme correspondences.", "QAR does not measure rate.", "QAR distinguishes \"right there\" questions from inference or knowledge questions.", "QAR does not build sight words."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Fluency frees cognitive resources for meaning, bridging decoding and comprehension.", "Fluency does not replace comprehension instruction.", "Comprehension is still required.", "Fluency connects decoding and comprehension."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Retelling builds narrative and discourse oral language.", "Retelling builds more than print concepts.", "Retelling is not handwriting.", "Retelling builds more than phonemic awareness."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Advance to vowel teams while reviewing short vowels as needed.", "The short vowels are already mastered.", "Skipping both leaves gaps.", "Vowel teams still need teaching."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["\"Bike\" and \"time\" are VCe, not vowel teams.", "\"Hat\" and \"cap\" are closed syllables.", "\"Boat\" and \"coach\" share the oa vowel team.", "\"Open\" and \"silent\" have open first syllables."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Counting letters is not morphology.", "Morphology breaks words into prefixes, roots, and suffixes.", "Picture matching is not morphology.", "Rhyming families are phonics."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

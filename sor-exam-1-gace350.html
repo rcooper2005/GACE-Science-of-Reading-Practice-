@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["Hart and Risley found large differences in how many words young children hear, linked to later vocabulary and achievement.", "The word gap is about early language exposure, not spelling.", "Reading versus listening rate is unrelated.", "It is not about state phonics policy."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["A summative test is not the \"we do\" phase.", "Modeling alone is the \"I do\" phase.", "Independent work is the \"you do\" phase.", "\"We do\" is guided practice with scaffolded teacher support."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Phoneme isolation targets phonemic awareness, not rate.", "Accurate but slow reading signals a need for rate and automaticity, built through repeated or timed reading.", "Letter names are not the issue; accuracy is already strong.", "Print concepts are not the issue."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Vocabulary is not the problem; decoding is.", "Prosody is expression, not decoding.", "Comprehension strategies do not fix sound-by-sound decoding.", "Reading \"ph\" as /p/ /h/ shows a gap in digraph (grapheme-phoneme) knowledge."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Reading from a flashcard involves print, not phonemic awareness.", "Clapping syllables is syllable segmentation, not phoneme segmentation.", "Recognizing rhyme is rhyme awareness.", "Saying /k/ /a/ /t/ breaks a word into its phonemes: phoneme segmentation."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Above-average screening scores do not signal risk.", "Rapid sight-word learning does not signal risk.", "Persistent trouble with rhyming, phoneme manipulation, and letter-sound recall despite good instruction are classic risk signs.", "Strong oral vocabulary alone is not a risk sign."], "t": "Dyslexia: assessment and identification", "u": "https://www.readingrockets.org/topics/assessment-and-evaluation/articles/dyslexia-schools-assessment-and-identification"}, {"w": ["Fluency drills do not teach text structure.", "Explicitly teaching the sequence and its signal words is teaching text structure.", "Phoneme blending is foundational, not text structure.", "Memorizing words in isolation is not text structure."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Vocabulary strongly affects comprehension.", "Vocabulary (meaning) differs from decoding (pronouncing).", "Vocabulary matters for informational texts too.", "Readers must know most of the words in a text to build its meaning."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["The sequence is planned, not incidental.", "Three-cueing relies on guessing, not modeled decoding.", "This is instruction, not assessment.", "Model, guided practice, then independent use is the gradual release of responsibility."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Rhyme does not address unfamiliar content words.", "The student's issue is word meaning, not letter sounds.", "Speed does not build meaning.", "Pre-teaching vocabulary and background knowledge addresses meaning breakdowns."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Limited exposure to complex syntax makes complex sentences hard to comprehend.", "Blending phonemes is a phonemic awareness skill.", "Rhyme is a phonological skill.", "Letter names are a print skill."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["\"Cake\" is a vowel-consonant-e (VCe) syllable.", "In \"bird,\" the r controls the vowel: an r-controlled syllable.", "\"Happy\" has a closed syllable and an open one, neither r-controlled.", "\"Open\" has an open syllable and a closed one."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Problem–solution presents a problem and its fix.", "Description lists features.", "Showing similarities and differences is compare and contrast.", "Sequence shows order."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Speed alone ignores accuracy and meaning.", "Sight words are part of fluency, not its definition.", "Fluency combines accuracy, appropriate rate, and prosody.", "Accuracy alone ignores rate."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Receptive vocabulary is not limited to academic words.", "Words actively used are expressive vocabulary.", "Receptive vocabulary is words understood when heard or read.", "Receptive vocabulary includes words learned many ways."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Summative assessments measure overall achievement at one point in time.", "Ongoing weekly feedback is progress monitoring.", "Pinpointing a specific weakness is diagnostic assessment.", "Screening everyone for risk is universal screening."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Practice should reinforce the patterns already being taught.", "Unrelated advanced content confuses students.", "Practice should support decoding too.", "Random selection breaks the systematic sequence."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Inferring a meaning from context during independent reading is incidental learning.", "A quiz on preselected words is direct instruction.", "Defining a word before reading is direct instruction.", "A teacher-made organizer is direct instruction."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Reading faster does not repair understanding.", "Rereading and using context clues is a classic fix-up strategy.", "Ignoring punctuation hurts meaning.", "Skipping confusion leaves it unresolved."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Background knowledge matters greatly for informational text.", "Knowledge does not replace decoding.", "Background knowledge gives readers a framework to connect new information.", "Knowledge supports comprehension, not just fluency."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Phonological awareness is recognizing and manipulating sounds in spoken language, without print.", "Matching letters to sounds is phonics.", "Word meaning is vocabulary.", "Automatic word reading is sight-word recognition."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Cumulative review does not stop new learning.", "Cumulative review keeps old skills strong and connects them to new ones.", "Cumulative review connects lessons, not separates them.", "Assessment is still needed."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["This is instruction, not summative assessment.", "Grouping by need is the opposite of one-size-fits-all.", "Data-informed small groups within Tier 1 fit this description.", "Universal screening identifies risk; it is not this activity."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["WCPM does not measure vocabulary.", "Words correct per minute measures rate and accuracy.", "WCPM does not measure phonemic awareness.", "WCPM does not measure listening comprehension."], "t": "Understanding and assessing fluency", "u": "https://www.readingrockets.org/topics/assessment-and-evaluation/articles/understanding-and-assessing-fluency"}, {"w": ["Using a word orally but not recognizing it in print is a gap between oral and print vocabulary.", "Phonemic awareness versus phonics is not the gap shown.", "Fluency and prosody are not the issue.", "Comprehension and knowledge are not the issue."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

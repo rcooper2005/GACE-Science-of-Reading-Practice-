@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["Several points below the aimline mean the instructional plan needs to change.", "Exiting support is the opposite response.", "Continuing unchanged ignores the data.", "Analyze before blaming the goal."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Frustration level is the too-difficult range.", "Independent level is the easy range.", "Instructional level is challenging but doable with teacher support.", "Accuracy guides text choice."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Figurative language is not letter-sound recall.", "It is not decoding.", "Figurative language teaches nonliteral meaning.", "It is not handwriting."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Read-alouds do not replace decoding instruction.", "Read-alouds help all readers.", "Read-alouds build vocabulary and knowledge.", "Read-alouds give access to grade-level ideas while decoding develops."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Decodable texts are important.", "Random order is not systematic.", "Sequence from simple, high-utility patterns to complex ones.", "Complex-first is backward."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Emergent literacy is the early knowledge and attitudes before formal reading instruction.", "It is not a test.", "It is the first stage, not the last.", "It precedes fluent reading."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["Match intervention content to data-identified needs.", "Identical content ignores data.", "Syllable instruction helps special education students too.", "Diagnostic data should guide planning."], "t": "Literacy strategies to support intensifying interventions", "u": "https://www.readingrockets.org/topics/intervention-and-prevention/articles/literacy-strategies-support-intensifying-interventions"}, {"w": ["Comprehension alone misses word-level needs.", "Choose research-backed programs with explicit phonics and phonemic awareness.", "Three-cueing is not evidence-based.", "Popularity is not evidence."], "t": "Literacy strategies to support intensifying interventions", "u": "https://www.readingrockets.org/topics/intervention-and-prevention/articles/literacy-strategies-support-intensifying-interventions"}, {"w": ["Pre-teach a few essential Tier 2 and Tier 3 words.", "Waiting loses comprehension.", "Unsupported lists are weak.", "Pictures alone are insufficient."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Fidelity checks remain necessary.", "With good fidelity, results reflect the intervention, not inconsistent delivery.", "Delivery matters, not just student effort.", "Fidelity requires accountability."], "t": "Literacy strategies to support intensifying interventions", "u": "https://www.readingrockets.org/topics/intervention-and-prevention/articles/literacy-strategies-support-intensifying-interventions"}, {"w": ["Teach closed syllables explicitly before or alongside harder syllable types.", "Phonics instruction is still needed.", "Skipping a gap compounds it.", "Comprehension does not fix decoding."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Self-questioning is not phonemic awareness.", "It is not rate measurement.", "It is not print concepts.", "Self-questioning engages students in building and monitoring meaning."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["All students matter.", "Benchmark data are useful.", "Find class-wide patterns and adjust core instruction and grouping.", "Changing the curriculum without analysis is unwise."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Think-alouds are not decoding.", "Think-alouds are not assessment.", "Think-alouds are not a benchmark.", "Think-alouds make a skilled reader's invisible processes visible."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Once in fall misses growth.", "Fall, winter, and spring screening captures risk and growth.", "A single midyear window is insufficient.", "End of year alone is too late."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["The calendar is not data.", "Requests need data review.", "Sustained growth at or above the goal line justifies moving to Tier 2.", "One point is not a trend."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Assuming a cause is not assessment.", "Separate decoding and listening measures isolate the source (Simple View).", "Assuming a cause is not assessment.", "One overall test cannot isolate the cause."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["When much of the class shows a gap, reteach or add practice in Tier 1.", "Class-wide gaps need class-wide response.", "Whole-group data are useful.", "Adjust based on what the data show."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Assessments are still given.", "Instruction continues.", "Considering language background prevents mistaking language differences for disability.", "Expectations stay high."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Separating by label is not skill-based.", "Progress monitoring continues.", "Identical instruction ignores need.", "Stations allow data-based small-group differentiation."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Text features are not a rate skill.", "Captions, headings, and bold words are text features that aid comprehension.", "Text features are not segmentation.", "Text features apply beyond emergent readers."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Pictures are not the alphabetic principle.", "The alphabetic principle: sounds are represented by letters systematically.", "Letters do relate to sounds.", "Consonants matter too."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Understanding a text read aloud but not when reading it alone points to word recognition.", "One of the two components is the barrier.", "Language comprehension is intact.", "Handwriting is unrelated."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["The meaning is directly supported.", "No contrast is given.", "No word parts are used.", "\"Or home\" restates the meaning: a definition clue."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Letters and pictures serve different purposes.", "Books are read aloud too.", "Naming pictures is not a print concept.", "Print carries meaning, runs left to right and top to bottom, and words are separated by spaces."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

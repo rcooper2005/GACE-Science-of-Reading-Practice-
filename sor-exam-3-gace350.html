@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["Full alphabetic readers use complete grapheme-phoneme knowledge to decode.", "Using morphemes is the consolidated phase.", "A single visual cue is the pre-alphabetic phase.", "Memorized shapes is pre-alphabetic reading."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Decoding and encoding are not listening and speaking.", "Both apply to real words.", "Decoding turns print into sound; encoding turns sound into print (spelling).", "They are distinct processes."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Diagnostics are given to students already flagged, not everyone.", "Diagnostics are usually longer than screeners.", "Diagnostics give detailed strengths and weaknesses to guide instruction.", "Diagnostics measure far more than rate."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Syllable division is not the skill shown.", "Treating \"sh\" as one sound shows a digraph represents a single phoneme.", "There are no vowel teams in \"ship.\"", "Morphology is about meaning parts."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["First-language oral skills should be valued, not discouraged.", "Strong first-language oral skills can transfer to second-language literacy.", "First-language skills support, not block, second-language literacy.", "First-language skills matter."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Onset-rime blending is part of phonological awareness.", "Onset-rime units are larger and easier than single phonemes.", "It is oral, so it is phonological awareness, not phonics.", "It is easier, not harder."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Ending in a vowel (go) is an open syllable.", "Consonant-le is a different syllable type.", "Vowel plus r is r-controlled.", "A closed syllable ends in a consonant, making the vowel short (cat)."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["A word list with no discussion builds no connections.", "Semantic mapping organizes related words and concepts around a topic.", "Copying builds no meaning.", "A spelling test does not build meaning."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Explicit, systematic phonics plus oral language, vocabulary, and comprehension reflects the Science of Reading.", "Relying on cues means guessing.", "Reading does not develop naturally for most children.", "Comprehension should not be isolated from decoding."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Three-cueing can encourage guessing instead of building phonics-based decoding.", "Three-cueing does affect how students approach words.", "Structured Literacy rejects three-cueing.", "Three-cueing is opposite to systematic phonics."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Diagnostics pinpoint specific confusions.", "Probes do not replace diagnostics.", "One-minute probes measure rate and accuracy, not comprehension.", "Timed probes track growth in rate and accuracy against a benchmark."], "t": "Understanding and assessing fluency", "u": "https://www.readingrockets.org/topics/assessment-and-evaluation/articles/understanding-and-assessing-fluency"}, {"w": ["Assessment should be ongoing.", "Assessment and instruction should be linked.", "Assessment data should drive what and how teachers teach next.", "Data should inform decisions."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Systematic phonics teaches letter-sound relationships in a planned, cumulative sequence.", "Systematic phonics is for all students.", "Picture clues mean guessing.", "Whole-word memorization is not phonics."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Structured Literacy teaches directly; discovery is the opposite.", "Structured Literacy teaches decoding explicitly.", "Its sequence is consistent.", "Structured Literacy follows a planned, cumulative sequence with direct teaching."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Tier 2 words are high-utility academic words used across many contexts.", "Tier 2 words appear in all kinds of texts.", "Everyday words are Tier 1.", "Technical words are Tier 3."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Prosody is expression.", "Phonics patterns are decoding.", "Recognizing cause and effect is using text structure.", "Segmentation is phonemic awareness."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Oral language matters for reading.", "Vocabulary and syntax built through listening and speaking support reading comprehension.", "Oral language keeps mattering.", "Oral and written language share skills."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Irregular words should still be taught.", "Picture association means guessing.", "Waiting delays needed words.", "Point out the regular and irregular parts; this supports orthographic mapping."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["PLC data review is not about blame.", "The goal is improvement.", "PLCs collaboratively identify trends, plan adjustments, and share practices.", "Individual progress monitoring is still needed."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Tradition does not make instruction evidence-based.", "Marketing does not make instruction evidence-based.", "Research must guide the choice.", "Evidence-based instruction is supported by rigorous research."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Words never seen again are low priority.", "Known words do not need teaching.", "Teach key Tier 2 and 3 words that are central and hard to infer.", "Teaching every word is impractical."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["In-depth diagnosis is diagnostic assessment.", "Screeners lead to further assessment.", "Screeners measure more than listening comprehension.", "Universal screeners quickly flag students at risk."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["An informal reading inventory (IRI) diagnoses independent, instructional, and frustration levels.", "A universal screener is quick and broad.", "Progress monitoring is frequent and brief.", "Outcome tests are end-of-year assessments."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["A worksheet provides no fluency model.", "Partner reading gives a model plus peer accountability.", "Silent reading gives no feedback.", "A quiz is not fluency practice."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Domain-specific words like \"photosynthesis\" are Tier 3.", "Sight words are high-frequency words.", "Tier 2 words are general academic words.", "Tier 1 words are everyday words."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

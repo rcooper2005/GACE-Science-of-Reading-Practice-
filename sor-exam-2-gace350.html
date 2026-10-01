@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["Repeating the initial /s/ sound is alliteration.", "\"Once upon a time\" is a story opening.", "This sentence has no repeated initial sound.", "\"Cat sat mat\" is rhyme, not alliteration."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Diagnosis requires specialists and formal assessment.", "Content teachers can spot foundational struggles and support or refer students.", "Designing interventions is a specialist's role.", "Specialists remain essential."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Age alone ignores skill needs.", "Grouping should use assessment data.", "Targeted small groups matched to data needs are differentiation.", "Identical instruction ignores differences."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Choral reading is practice, not an independent test.", "Reading together models accurate, expressive reading while students practice.", "It is not a segmentation assessment.", "It is not direct vocabulary instruction."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Specialists should collaborate, not work in isolation.", "Literacy is everyone's job.", "Content teachers play a key role.", "Literacy support works best through collaboration across educators."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["The two are strongly related.", "They converge over time; they do not diverge.", "Once decoding is automatic, language comprehension drives both, so they converge.", "The relationship holds for all readers."], "t": "How children learn to read: Simple View and Reading Rope", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics"}, {"w": ["Consonant-le appears in multisyllable words.", "The vowel is in the preceding syllable, not the -le syllable.", "Consonant-le comes at the end of a word.", "Consonant-le is the final syllable: the consonant plus -le (ta-ble)."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Summarizing is not letter-sound recall.", "Summarizing is not orthographic mapping.", "Summarizing is not segmentation.", "Identifying the main idea and key details builds overall comprehension."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Academic and conversational language differ.", "Academic language is harder for young children.", "Academic language is used in speech and writing.", "Academic language has more complex syntax and less familiar vocabulary."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["A seating chart is not an assessment system.", "A test schedule is not a full system.", "Screening, tiers, and progress monitoring form an MTSS framework.", "MTSS is instructional, not merely administrative."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Problem and resolution are elements of narrative text structure.", "This is not orthographic mapping.", "This is not print concepts.", "This is not phoneme segmentation."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Removing /s/ from \"stop\" is phoneme deletion.", "Rhyme recognition is a different task.", "Syllable segmentation is a different task.", "Print concepts are a different skill."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["The student decodes well already.", "Flat, word-by-word reading with no attention to punctuation needs prosody support.", "Phonemic awareness is not the issue.", "Print concepts are not the issue."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Disciplinary literacy teaches reading, writing, and reasoning the way a discipline does.", "Literacy belongs in every subject, not just English.", "Disciplinary literacy uses texts.", "Disciplinary literacy is subject-specific, not generic."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["Phonemic awareness is strongly related to reading.", "Phonemic awareness builds sound skills but not the letter-sound links needed to decode print.", "It does not replace vocabulary instruction.", "It benefits beginning readers most."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Annual summative data are too infrequent for daily planning.", "Preference is not data.", "Data-based decisions use assessment results to adjust instruction.", "Ignoring data is the opposite."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["A decodable book uses print.", "Matching letters to sounds uses print.", "Picture sorting by beginning sound is purely oral.", "Dictation involves writing."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Progress monitoring is frequent (weekly or biweekly) to track response.", "It targets struggling students, not top scorers.", "Once a year is summative.", "It is not about background knowledge."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["\"Unlike her shy older brother\" signals the opposite meaning: a contrast clue.", "No definition is stated.", "A usable clue is present.", "No synonym is given."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["This order is reversed.", "Development runs word, syllable, onset-rime, then phoneme.", "This order is scrambled.", "This order is scrambled."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Automaticity directly affects comprehension.", "It does not replace knowledge.", "Automaticity applies to silent reading too.", "Automatic word recognition frees attention for comprehension."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Discussion and open-ended questions build oral language and reasoning.", "Discussion is not orthographic mapping.", "Discussion is not handwriting.", "Discussion is not phoneme blending."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Decodable texts deliberately limit vocabulary to taught patterns.", "Decodable texts are not listening assessments.", "Decodable texts let students practice patterns they have been taught.", "Decodable texts accompany phonics instruction, not replace it."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Rhyme is an early skill.", "Onset-rime blending is a middle skill.", "Counting syllables is an early skill.", "Manipulating individual phonemes is the most difficult skill."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Monitoring requires awareness.", "Comprehension monitoring is noticing a breakdown and fixing it.", "Speed without understanding is not monitoring.", "Identifying phonemes is phonemic awareness."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

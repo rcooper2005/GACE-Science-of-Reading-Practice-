@@ -90,6 +90,21 @@
   }
   #submit-btn:hover { opacity: .9; }
   .unanswered-flag { outline: 2px dashed #d93025; }
+
+  /* ---------- Answer explanations (added) ---------- */
+  .q-why { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: #f6fffd; border: 1px solid var(--accent-light); }
+  .q-why-head { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .q-why-head.ok { color: #1e7e34; }
+  .q-why-head.no { color: #b3261e; }
+  .q-why ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .q-why li { display: grid; grid-template-columns: 1.5em 1fr; gap: 6px; font-size: 14px; line-height: 1.45; color: #444; padding: 5px 8px; border-radius: 8px; border-left: 4px solid transparent; }
+  .q-why li b { color: var(--accent-dark); }
+  .q-why li.is-correct { background: #e8f8ee; border-left-color: #34a853; color: #222; }
+  .q-why li.is-picked { background: #fdecea; border-left-color: #d93025; color: #222; }
+  .q-why .tagline { font-weight: 800; margin-right: 4px; }
+  .q-review { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent-dark); text-underline-offset: 3px; }
+  .q-review:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* ---------- end answer explanations ---------- */
 </style>
 </head>
 <body>
@@ -187,6 +202,49 @@ function retakeExam() {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
+<!-- answer-explanations:start -->
+<script>
+const FEEDBACK = [{"w": ["A semantic feature grid is not rate work.", "A semantic feature grid deepens conceptual understanding of related words.", "It is not phonemic awareness.", "It is not print concepts."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Dialogic reading is not rate work.", "Open-ended questions and expansions build oral language and comprehension.", "It is not phonics.", "It is not handwriting."], "t": "Oral language (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/oral-language"}, {"w": ["Reporting achievement is an appropriate use.", "An annual test is too infrequent for weekly adjustments.", "State comparison is an appropriate use.", "Program evaluation is an appropriate use."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Design explicit lessons targeting the identified blending weakness.", "Instruction should start now.", "Ignoring data wastes it.", "Generic instruction misses the need."], "t": "Literacy strategies to support intensifying interventions", "u": "https://www.readingrockets.org/topics/intervention-and-prevention/articles/literacy-strategies-support-intensifying-interventions"}, {"w": ["Oral games (clapping, rhyming, beginning sounds) are developmentally appropriate.", "Multisyllabic decoding is too advanced.", "Tests are inappropriate.", "Timed reading is inappropriate."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Inference needs remain.", "Literal-only work avoids the gap.", "Model combining text clues with knowledge to infer.", "Phonics does not address inference."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Citing evidence is not phonemic awareness.", "It is not print concepts.", "Citing evidence grounds interpretation in the text, deepening comprehension.", "It is not rate."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Accommodations and modifications differ.", "Changing content is a modification.", "Accommodations are often appropriate.", "Accommodations change access or response, not content expectations."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Foundational skills are still taught.", "It is not a scheduling item.", "It does not replace phonics.", "Connecting to students' knowledge boosts engagement and comprehension."], "t": "Effective reading instruction", "u": "https://www.readingrockets.org/topics/about-reading/articles/effective-reading-instruction"}, {"w": ["b/d confusion is not vocabulary.", "b/d confusion is common and responds to explicit, multisensory instruction.", "The student can benefit.", "It is not a comprehension weakness."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["A sound wall is for phonics, not comprehension.", "Sound walls organize phonemes by articulation and link them to spellings.", "Sound walls show sound information.", "Sound walls support phonics instruction."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["This is typical development; continue blending practice.", "These are relevant literacy signs.", "Multisyllabic decoding is too advanced.", "Foundational skills come first."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Fluency is already strong.", "Letter sounds are strong.", "Teach retelling, summarizing, and questioning explicitly.", "Handwriting is unrelated."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Comprehension instruction is still needed.", "Reader's Theater is not a PA assessment.", "It is oral, not silent.", "Rehearsing for performance motivates repeated, expressive reading."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Teaching a letter's sound is not fluency.", "It is not comprehension.", "Teaching that m represents /m/ is direct grapheme-phoneme instruction.", "It is not assessment."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Families deserve information.", "A raw score alone is unclear.", "Never contradict the data.", "Explain the data, level relative to expectations, and next steps."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Skipping vowel teams compounds the gap.", "Vowel teams matter.", "Reassessing without teaching changes nothing.", "Teach the identified vowel teams explicitly and systematically."], "t": "Phonics and decoding (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/phonics-and-decoding"}, {"w": ["Moving from syllables to phoneme deletion follows the continuum.", "Rhyme alone stalls progress.", "Skipping simpler tasks ignores the continuum.", "Oral work continues alongside phonics."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}, {"w": ["Story grammar builds a narrative structure framework.", "It is not segmentation.", "It is not print concepts.", "It is not orthographic mapping."], "t": "Reading 101 course modules (see Comprehension)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Morphology later supports both decoding and vocabulary.", "It is not handwriting.", "It connects to print.", "It goes beyond sound-level work."], "t": "Reading 101 course modules (see Vocabulary)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules"}, {"w": ["Opinion is not data.", "Goals must be individualized.", "IEP goals should be specific, measurable, and tied to the diagnosed skill.", "Vague goals cannot be measured."], "t": "Literacy strategies to support intensifying interventions", "u": "https://www.readingrockets.org/topics/intervention-and-prevention/articles/literacy-strategies-support-intensifying-interventions"}, {"w": ["Repeated reading does not replace comprehension instruction.", "It builds fluency, not new phonics patterns.", "It helps struggling readers.", "Repeated reading builds automaticity that generalizes."], "t": "Fluency (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-and-writing-basics/fluency"}, {"w": ["Follow up with diagnostics and begin targeted instruction.", "Referral needs more data first.", "Repeated at-risk scores are credible.", "Waiting delays help."], "t": "Assessment in depth (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/assessment/depth"}, {"w": ["Arbitrary goals lack a basis.", "Normative growth rates set ambitious, realistic, individualized goals.", "Growth matters, not one score.", "Goals guide intervention."], "t": "Understanding and assessing fluency", "u": "https://www.readingrockets.org/topics/assessment-and-evaluation/articles/understanding-and-assessing-fluency"}, {"w": ["Fluency drills skip the gap.", "All students can learn to read.", "Practice onset-rime orally before phoneme-level tasks.", "Morphology is far too advanced."], "t": "Phonological and phonemic awareness (Reading 101)", "u": "https://www.readingrockets.org/reading-101/reading-101-learning-modules/course-modules/phonological-and-phonemic-awareness"}];
+
+(function(){
+  if (typeof FEEDBACK === 'undefined' || typeof scoreQuiz !== 'function') return;
+  const L = ['A','B','C','D'];
+  const originalScore = scoreQuiz;
+  window.scoreQuiz = function(){
+    originalScore();
+    document.querySelectorAll('.q-why').forEach(el => el.remove());
+    QUESTIONS.forEach((q, i) => {
+      const fb = FEEDBACK[i];
+      const card = document.getElementById('card-' + i);
+      const chosenEl = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!fb || !card || !chosenEl) return;
+      const chosen = parseInt(chosenEl.value, 10);
+      const box = document.createElement('div'); box.className = 'q-why';
+      const head = document.createElement('p');
+      if (chosen === q.correct) { head.className = 'q-why-head ok'; head.textContent = 'Correct. Here is why each choice is right or wrong:'; }
+      else { head.className = 'q-why-head no'; head.textContent = `You chose ${L[chosen]}; the correct answer is ${L[q.correct]}. Here is why:`; }
+      box.appendChild(head);
+      const ul = document.createElement('ul');
+      fb.w.forEach((reason, j) => {
+        const li = document.createElement('li');
+        if (j === q.correct) li.classList.add('is-correct'); else if (j === chosen) li.classList.add('is-picked');
+        const b = document.createElement('b'); b.textContent = L[j];
+        const span = document.createElement('span');
+        const t = document.createElement('span'); t.className = 'tagline';
+        t.textContent = j === q.correct ? 'Correct.' : (j === chosen ? 'Your answer.' : 'Incorrect.');
+        span.appendChild(t); span.appendChild(document.createTextNode(reason));
+        li.appendChild(b); li.appendChild(span); ul.appendChild(li);
+      });
+      box.appendChild(ul);
+      const a = document.createElement('a'); a.className = 'q-review'; a.href = fb.u; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = `Review on Reading Rockets: ${fb.t}`;
+      box.appendChild(a);
+      card.appendChild(box);
+    });
+  };
+})();
+</script>
+<!-- answer-explanations:end -->
 <script src="license-footer.js"></script>
 </body>
 </html>

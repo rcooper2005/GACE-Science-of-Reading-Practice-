@@ -1,6 +1,6 @@
 # License
 
-**GACE Science of Reading Practice Exams** © 2026 by [Your Name], Georgia Gwinnett College
+**GACE Science of Reading Practice Exams** © 2026 by Dr. Rebecca Cooper, Georgia Gwinnett College
 
 This work is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**.
 
@@ -20,7 +20,7 @@ This work is licensed under the **Creative Commons Attribution-NonCommercial-Sha
 
 ## Suggested attribution
 
-> "GACE Science of Reading Practice Exams" by [Your Name], Georgia Gwinnett College, https://rcooper2005.github.io/GACE-Science-of-Reading-Practice-/, licensed under CC BY-NC-SA 4.0.
+> "GACE Science of Reading Practice Exams" by Dr. Rebecca Cooper, Georgia Gwinnett College, https://rcooper2005.github.io/GACE-Science-of-Reading-Practice-/, licensed under CC BY-NC-SA 4.0.
 
 ## Trademark notice
 

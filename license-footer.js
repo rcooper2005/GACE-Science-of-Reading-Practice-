@@ -1,7 +1,7 @@
 /* Creative Commons license footer — shared by every page on the site.
    To change the name or license later, edit ONLY this file. */
 (function () {
-  var AUTHOR = "[Your Name]";   // <-- replace with your name
+  var AUTHOR = "Dr. Rebecca Cooper";   // <-- replace with your name
   var YEAR = "2026";
   var LICENSE_URL = "https://creativecommons.org/licenses/by-nc-sa/4.0/";
 
